@@ -1,4 +1,5 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
+import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/root/navbar/bar.dart';
 import 'package:bento_challenge/root/navbar/item.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UIScale.init(context);
     return Scaffold(
       body: Container(
         color: Colors.white,
