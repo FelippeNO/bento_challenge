@@ -12,7 +12,7 @@ const Map<String, dynamic> productDetailsData = {
           'More commonly known as green cabbage, the cannonball cabbage is one of the most popular cabbage varieties. It is so named for the way its leaves are wound tightly over one another, with the final product resembling a cannonball.',
       'is_favorited': false,
       'categories': [],
-      'background_color': 'fff',
+      'background_color': '#F2F2F2',
     }
   ],
 };
