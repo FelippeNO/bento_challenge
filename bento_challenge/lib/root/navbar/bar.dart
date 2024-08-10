@@ -594,7 +594,6 @@ class ConvexAppBarState extends State<ConvexAppBar> with TickerProviderStateMixi
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            print('PUT ANIMATION');
             _onTabClick(i);
           },
           child: _newTab(i, active),

@@ -14,8 +14,8 @@
  *  limitations under the License.
  */
 
-import 'package:bento_challenge/navbar/bar.dart';
-import 'package:bento_challenge/navbar/interface.dart';
+import 'package:bento_challenge/root/navbar/bar.dart';
+import 'package:bento_challenge/root/navbar/interface.dart';
 import 'package:flutter/material.dart';
 
 /// Internal style configuration.

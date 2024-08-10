@@ -1,10 +1,15 @@
+import 'package:bento_challenge/app_module.dart';
 import 'package:bento_challenge/core/design/ui_colors.dart';
-import 'package:bento_challenge/navbar/bar.dart';
-import 'package:bento_challenge/navbar/item.dart';
+import 'package:bento_challenge/core/design/ui_theme_data.dart';
+import 'package:bento_challenge/root/navbar/bar.dart';
+import 'package:bento_challenge/root/navbar/item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 void main() {
-  runApp(const MyApp());
+  return runApp(ModularApp(module: AppModule(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,13 +17,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    Modular.setNavigatorKey(navigatorKey);
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Bento Challenge',
+      theme: UIThemeData.normalTheme,
+      routerConfig: Modular.routerConfig,
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
     );
   }
 }

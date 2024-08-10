@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-import 'package:bento_challenge/navbar/painter.dart';
+import 'package:bento_challenge/root/navbar/painter.dart';
 import 'package:flutter/material.dart';
 
 /// Single convex button widget
