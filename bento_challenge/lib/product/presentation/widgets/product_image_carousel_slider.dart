@@ -6,11 +6,11 @@ class ProductImageCarouselSlider extends StatefulWidget {
   const ProductImageCarouselSlider({
     super.key,
     required this.carouselController,
-    required this.list,
+    required this.images,
   });
 
   final CarouselSliderController carouselController;
-  final List<String> list;
+  final List<String> images;
 
   @override
   State<ProductImageCarouselSlider> createState() => _ProductImageCarouselSliderState();
@@ -28,9 +28,9 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
           width: MediaQuery.of(context).size.width, // UIScale.widthDevice
           child: CarouselSlider.builder(
             carouselController: widget.carouselController,
-            itemCount: widget.list.length,
+            itemCount: widget.images.length,
             itemBuilder: (context, index, realIndex) {
-              return Hero(tag: 'product_image', child: Image.asset('lib/assets/images/${widget.list[index]}'));
+              return Hero(tag: 'product_image', child: Image.asset(widget.images[index]));
             },
             options: CarouselOptions(
               height: 400,
@@ -53,7 +53,7 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            for (var i = 0; i < widget.list.length; i++)
+            for (var i = 0; i < widget.images.length; i++)
               Padding(
                 padding: const EdgeInsets.only(right: 4),
                 child: AnimatedContainer(
