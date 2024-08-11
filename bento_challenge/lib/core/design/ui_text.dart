@@ -14,7 +14,7 @@ class UIText extends StatelessWidget {
     super.key,
     this.color = Colors.black,
     this.fontSize = 14,
-    this.letterSpacing = 0.7,
+    this.letterSpacing = 0.2,
     this.maxLines,
     this.fontWeight = FontWeight.normal,
     this.overflow,
