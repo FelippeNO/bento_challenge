@@ -45,14 +45,26 @@ class _ProductCategoryBarState extends State<ProductCategoryBar> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ProductCategoryItem(
-            item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+            item: ProductCategoryEntity(
+                name: 'Vegetarian',
+                id: '1',
+                iconPath: './lib/assets/png_icons/leaf.png',
+                backgroundColor: UIColors.madang),
             key: keys[0],
           ),
           ProductCategoryItem(
-              item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+              item: ProductCategoryEntity(
+                  name: 'Halal Food',
+                  id: '1',
+                  iconPath: './lib/assets/png_icons/halal.png',
+                  backgroundColor: UIColors.mintJulep),
               key: keys[1]),
           ProductCategoryItem(
-              item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+              item: ProductCategoryEntity(
+                  name: 'Gluten-free',
+                  id: '1',
+                  iconPath: './lib/assets/png_icons/gluten-free.png',
+                  backgroundColor: UIColors.cruise),
               key: keys[2]),
         ],
       ),
@@ -119,19 +131,22 @@ class _ProductCategoryItemState extends State<ProductCategoryItem> with SingleTi
                 Container(
                   width: 36,
                   height: 36,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.green,
+                    color: widget.item.backgroundColor,
                   ),
-                  child: const Icon(
-                    Icons.energy_savings_leaf,
-                    color: UIColors.blueZodiac,
+                  child: Padding(
+                    padding: const EdgeInsets.all(7.0),
+                    child: Image.asset(
+                      widget.item.iconPath,
+                      color: UIColors.blueZodiac,
+                    ),
                   ),
                 ),
-                const UIText(
-                  'Vegetarian',
+                UIText(
+                  widget.item.name,
                   fontSize: 12,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: UIColors.blueZodiac,
                 ),
               ],

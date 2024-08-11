@@ -61,7 +61,7 @@ class _AddToCartButtonState extends State<AddToCartButton> {
         decoration: BoxDecoration(
           color: _buttonState == ButtonState.add || _buttonState == ButtonState.loading
               ? UIColors.shamrock
-              : Colors.redAccent,
+              : UIColors.baliHai.withOpacity(0.35),
           borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
@@ -72,7 +72,7 @@ class _AddToCartButtonState extends State<AddToCartButton> {
                 )
               : UIText(
                   _buttonState == ButtonState.add ? 'Add to Cart' : 'Remove from Cart',
-                  color: UIColors.blueZodiac,
+                  color: _buttonState == ButtonState.add ? UIColors.blueZodiac : UIColors.blueZodiac,
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
                 ),
