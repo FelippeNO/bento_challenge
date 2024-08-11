@@ -15,6 +15,7 @@ dependencies:
   flutter_modular: ^6.3.4
   dartz: ^0.10.1
   lottie: ^3.1.2
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +30,7 @@ flutter:
     - lib/assets/fonts/
     - lib/assets/png_icons/
     - lib/assets/lottie_animations/
+    - lib/assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
