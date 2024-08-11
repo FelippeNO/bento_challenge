@@ -27,6 +27,7 @@ class RootView extends StatelessWidget {
     UIScale.init(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ValueListenableBuilder(
           valueListenable: Modular.get<MyBottomNavBarController>().currentIndex,
           builder: (context, value, child) {

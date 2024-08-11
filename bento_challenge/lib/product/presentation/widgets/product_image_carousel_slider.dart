@@ -30,7 +30,7 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
             carouselController: widget.carouselController,
             itemCount: widget.images.length,
             itemBuilder: (context, index, realIndex) {
-              return Hero(tag: 'product_image', child: Image.asset(widget.images[index]));
+              return Hero(tag: widget.images[0], child: Image.asset(widget.images[index]));
             },
             options: CarouselOptions(
               height: 400,
