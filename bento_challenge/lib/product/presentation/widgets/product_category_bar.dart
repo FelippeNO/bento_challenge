@@ -1,5 +1,6 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
+import 'package:bento_challenge/product/domain/entities/product_category_entity.dart';
 import 'package:flutter/material.dart';
 
 class ProductCategoryBar extends StatefulWidget {
@@ -43,9 +44,16 @@ class _ProductCategoryBarState extends State<ProductCategoryBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProductCategoryItem(key: keys[0]),
-          ProductCategoryItem(key: keys[1]),
-          ProductCategoryItem(key: keys[2]),
+          ProductCategoryItem(
+            item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+            key: keys[0],
+          ),
+          ProductCategoryItem(
+              item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+              key: keys[1]),
+          ProductCategoryItem(
+              item: ProductCategoryEntity(name: 'Vegetarian', id: '1', iconPath: '', backgroundColor: Colors.red),
+              key: keys[2]),
         ],
       ),
     );
@@ -55,7 +63,10 @@ class _ProductCategoryBarState extends State<ProductCategoryBar> {
 class ProductCategoryItem extends StatefulWidget {
   const ProductCategoryItem({
     super.key,
+    required this.item,
   });
+
+  final ProductCategoryEntity item;
 
   @override
   State<ProductCategoryItem> createState() => _ProductCategoryItemState();
