@@ -1,4 +1,5 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
+import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -69,13 +70,11 @@ class _AddToCartButtonState extends State<AddToCartButton> {
                   'lib/assets/lottie_animations/add-to-cart.json',
                   repeat: false,
                 )
-              : Text(
+              : UIText(
                   _buttonState == ButtonState.add ? 'Add to Cart' : 'Remove from Cart',
-                  style: const TextStyle(
-                    color: UIColors.blueZodiac,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                  ),
+                  color: UIColors.blueZodiac,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
                 ),
         ),
       ),
