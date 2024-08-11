@@ -14,4 +14,5 @@ class UIColors {
   static const Color mintJulep = Color(0xfff0f0bf);
   static const Color cruise = Color(0xffc3f0f0);
   static const Color madang = Color(0xffc2f0c1);
+  static const Color riceColor = Color(0xffedffe4);
 }
