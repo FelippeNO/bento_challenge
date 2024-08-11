@@ -6,7 +6,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 class PrimaryBackButton extends StatelessWidget {
   const PrimaryBackButton({
     super.key,
+    this.onBackTap,
   });
+
+  final void Function()? onBackTap;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +17,10 @@ class PrimaryBackButton extends StatelessWidget {
       animationDuration: const Duration(milliseconds: 80),
       scaleDownFactor: 0.8,
       onTap: () {
+        if (onBackTap != null) {
+          onBackTap!();
+          return;
+        }
         Modular.to.pop();
       },
       child: Container(
