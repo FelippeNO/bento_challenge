@@ -5,4 +5,12 @@ class ProductDetailsController extends ChangeNotifier {
   final GetProductDetailsByIdService _getProductDetailsByIdService;
 
   ProductDetailsController(this._getProductDetailsByIdService);
+
+  initialize() async {
+    final result = await _getProductDetailsByIdService.call(1);
+    result.fold(
+      (error) {},
+      (product) {},
+    );
+  }
 }
