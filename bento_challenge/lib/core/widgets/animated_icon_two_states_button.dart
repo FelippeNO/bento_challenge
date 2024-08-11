@@ -25,19 +25,19 @@ class AnimatedIconTwoStatesButton extends StatefulWidget {
 }
 
 class _AnimatedIconTwoStatesButtonState extends State<AnimatedIconTwoStatesButton> {
-  late bool _isFavorite;
+  late bool _isActivated;
 
   @override
   void initState() {
     super.initState();
-    _isFavorite = widget.isActivated;
+    _isActivated = widget.isActivated;
   }
 
   void _toggleFavorite() {
     setState(() {
-      _isFavorite = !_isFavorite;
+      _isActivated = !_isActivated;
     });
-    widget.onTap(_isFavorite);
+    widget.onTap(_isActivated);
   }
 
   @override
@@ -56,8 +56,8 @@ class _AnimatedIconTwoStatesButtonState extends State<AnimatedIconTwoStatesButto
         height: 37,
         width: 37,
         child: Icon(
-          _isFavorite ? widget.activatedIcon : widget.notActivatedIcon,
-          color: _isFavorite ? widget.activatedColor : widget.notActivatedColor,
+          _isActivated ? widget.activatedIcon : widget.notActivatedIcon,
+          color: _isActivated ? widget.activatedColor : widget.notActivatedColor,
           size: 24,
         ),
       ),
