@@ -146,30 +146,33 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       bottom: _isBottomBarVisible ? 0 : -90 - UIScale.bottomDevicePadding,
       left: 0,
       right: 0,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: UIScale.bottomDevicePadding),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(
-              top: BorderSide(
-                color: UIColors.baliHai.withOpacity(0.5),
-                width: 1,
+      child: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: UIScale.bottomDevicePadding),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(
+                  color: UIColors.baliHai.withOpacity(0.5),
+                  width: 1,
+                ),
               ),
             ),
-          ),
-          padding: UIPaddings.all16,
-          height: 90,
-          width: double.infinity,
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ProductDetailsPriceDisplay(
-                price: '6.90',
-                originalPrice: '8.15',
-              ),
-              AddToCartButton(),
-            ],
+            padding: UIPaddings.all16,
+            height: 90,
+            width: double.infinity,
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ProductDetailsPriceDisplay(
+                  price: '6.90',
+                  originalPrice: '8.15',
+                ),
+                AddToCartButton(),
+              ],
+            ),
           ),
         ),
       ),

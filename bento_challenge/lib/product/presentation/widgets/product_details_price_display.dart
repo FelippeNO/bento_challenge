@@ -28,17 +28,17 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
 
     _elasticController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 600),
     );
 
-    _elasticAnimation = Tween<double>(begin: 1.5, end: 1).animate(
-      CurvedAnimation(
-        parent: _elasticController,
-        curve: Curves.elasticInOut,
-      ),
-    );
+    _elasticAnimation = Tween<double>(begin: 1, end: 1.3).animate(CurvedAnimation(
+      parent: _elasticController,
+      curve: Curves.elasticInOut,
+    ));
 
-    _elasticController.forward();
+    _elasticController.forward().then((_) {
+      _elasticController.reverse();
+    });
 
     _lineController = AnimationController(
       vsync: this,
@@ -111,7 +111,7 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
                             animation: _lineAnimation,
                             builder: (context, child) {
                               return CustomPaint(
-                                size: Size(_lineAnimation.value * 45, 0.4),
+                                size: Size(_lineAnimation.value * 45, 0.3),
                                 painter: _LinePainter(),
                               );
                             },
