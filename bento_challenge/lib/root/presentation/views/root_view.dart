@@ -2,6 +2,8 @@ import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
+import 'package:bento_challenge/product/data/product_details_data.dart';
+import 'package:bento_challenge/product/domain/entities/product_details_entity.dart';
 import 'package:bento_challenge/root/navbar/bar.dart';
 import 'package:bento_challenge/root/navbar/item.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,9 @@ class RootView extends StatelessWidget {
             child: Center(
               child: AnimatedScaleUpScaleDownWidget(
                 onTap: () {
-                  Modular.to.pushNamed('/product/details');
+                  Modular.to.pushNamed('/product/details', arguments: {
+                    'product': ProductDetailsEntity.fromMap(productDetailsData['products'][0]),
+                  });
                 },
                 child: Container(
                   height: 200,
@@ -34,7 +38,7 @@ class RootView extends StatelessWidget {
                     child: Hero(
                       tag: 'product_image',
                       child: Image.asset(
-                        'lib/assets/images/cabbage.png',
+                        'lib/assets/images/cabbage0.png',
                       ),
                     ),
                   ),
