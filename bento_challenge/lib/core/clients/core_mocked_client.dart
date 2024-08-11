@@ -11,6 +11,6 @@ class CoreMockedClient implements IMockedClient {
   @override
   Future<MockedResponse> get(String path, {Map<String, dynamic>? queryParameters}) async {
     await Future.delayed(const Duration(milliseconds: globalMillisecondsDelay));
-    return MockedPaths.getDataFromPath(path);
+    return MockedPaths.getDataFromPath(path, queryParameters: queryParameters);
   }
 }
