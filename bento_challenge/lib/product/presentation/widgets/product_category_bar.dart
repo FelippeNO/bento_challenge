@@ -6,22 +6,22 @@ import 'package:flutter/material.dart';
 class ProductCategoryBar extends StatefulWidget {
   const ProductCategoryBar({
     super.key,
+    required this.categories,
   });
+
+  final List<ProductCategoryEntity> categories;
 
   @override
   State<ProductCategoryBar> createState() => _ProductCategoryBarState();
 }
 
 class _ProductCategoryBarState extends State<ProductCategoryBar> {
-  List<GlobalKey<_ProductCategoryItemState>> keys = [
-    GlobalKey<_ProductCategoryItemState>(),
-    GlobalKey<_ProductCategoryItemState>(),
-    GlobalKey<_ProductCategoryItemState>(),
-  ];
+  List<GlobalKey<_ProductCategoryItemState>> keys = [];
 
   @override
   void initState() {
     super.initState();
+    keys = List.generate(widget.categories.length, (_) => GlobalKey<_ProductCategoryItemState>());
     _animateCategories();
   }
 
@@ -44,28 +44,11 @@ class _ProductCategoryBarState extends State<ProductCategoryBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProductCategoryItem(
-            item: ProductCategoryEntity(
-                name: 'Vegetarian',
-                id: '1',
-                iconPath: './lib/assets/png_icons/leaf.png',
-                backgroundColor: UIColors.madang),
-            key: keys[0],
-          ),
-          ProductCategoryItem(
-              item: ProductCategoryEntity(
-                  name: 'Halal Food',
-                  id: '1',
-                  iconPath: './lib/assets/png_icons/halal.png',
-                  backgroundColor: UIColors.mintJulep),
-              key: keys[1]),
-          ProductCategoryItem(
-              item: ProductCategoryEntity(
-                  name: 'Gluten-free',
-                  id: '1',
-                  iconPath: './lib/assets/png_icons/gluten-free.png',
-                  backgroundColor: UIColors.cruise),
-              key: keys[2]),
+          for (var i = 0; i < widget.categories.length; i++)
+            ProductCategoryItem(
+              key: keys[i],
+              item: widget.categories[i],
+            ),
         ],
       ),
     );

@@ -22,7 +22,9 @@ class ProductModule extends Module {
   void routes(r) {
     r.child(
       '/details',
-      child: (context) => const ProductDetailsView(),
+      child: (context) => ProductDetailsView(
+        product: r.args.data['product'],
+      ),
       transition: TransitionType.fadeIn,
       duration: const Duration(milliseconds: 300),
     );

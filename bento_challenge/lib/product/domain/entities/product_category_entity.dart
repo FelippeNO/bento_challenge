@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class ProductCategoryEntity {
-  final String id;
+  final int id;
   final String name;
   final String iconPath;
   final Color backgroundColor;

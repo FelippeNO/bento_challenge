@@ -6,6 +6,7 @@ import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/core/widgets/animated_icon_two_states_button.dart';
 import 'package:bento_challenge/core/widgets/primary_back_button.dart';
+import 'package:bento_challenge/product/domain/entities/product_details_entity.dart';
 import 'package:bento_challenge/product/presentation/views/controllers/product_details_controller.dart';
 import 'package:bento_challenge/product/presentation/widgets/add_to_cart_button.dart';
 import 'package:bento_challenge/product/presentation/widgets/product_avaliation_container.dart';
@@ -18,23 +19,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class ProductDetailsView extends StatefulWidget {
-  const ProductDetailsView({super.key});
+  const ProductDetailsView({
+    super.key,
+    required this.product,
+  });
 
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
+  final ProductDetailsEntity product;
 }
 
 class _ProductDetailsViewState extends State<ProductDetailsView> {
   final ProductDetailsController controller = Modular.get<ProductDetailsController>();
 
   final CarouselSliderController carouselController = CarouselSliderController();
-  final List<String> list = [
-    'cabbage.png',
-    'cabbage.png',
-    'cabbage.png',
-  ];
 
   bool _isBottomBarVisible = false;
+
+  _onBackTap() async {
+    await carouselController.animateToPage(
+      0,
+      duration: const Duration(milliseconds: 80),
+      curve: Curves.easeInOut,
+    );
+    setState(() {
+      _isBottomBarVisible = false;
+    });
+    Future.delayed(const Duration(milliseconds: 200), () {
+      Modular.to.pop();
+    });
+  }
 
   @override
   void initState() {
@@ -64,7 +78,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const PrimaryBackButton(),
+                    PrimaryBackButton(
+                      onBackTap: () => _onBackTap(),
+                    ),
                     AnimatedIconTwoStatesButton(isActivated: true, onTap: (isActivated) {}),
                   ],
                 ),
@@ -74,7 +90,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductImageCarouselSlider(carouselController: carouselController, list: list),
+                      ProductImageCarouselSlider(
+                        carouselController: carouselController,
+                        images: widget.product.imagesPath,
+                      ),
                       Padding(
                         padding: UIPaddings.onlyHorizontal16,
                         child: Column(
@@ -86,8 +105,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                               children: [
                                 SizedBox(
                                   width: UIScale.width(65),
-                                  child: const UIText(
-                                    'Organic Fresh Green Cabbage',
+                                  child: UIText(
+                                    widget.product.name,
                                     color: UIColors.blueZodiac,
                                     fontWeight: FontWeight.w800,
                                     fontSize: 26,
@@ -100,15 +119,17 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            const UIText(
-                              'Shop: Alisha Mart',
+                            UIText(
+                              'Shop: ${widget.product.shop}',
                               color: UIColors.blueZodiac,
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               textAlign: TextAlign.start,
                             ),
                             const SizedBox(height: 16),
-                            const ProductCategoryBar(),
+                            ProductCategoryBar(
+                              categories: widget.product.categories,
+                            ),
                             const SizedBox(height: 16),
                             const UIText(
                               'Details',
@@ -117,8 +138,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                               fontSize: 20,
                             ),
                             const SizedBox(height: 8),
-                            const UIText(
-                              'More commonly known as green cabbage, the cannonball cabbage is one of the most popular cabbage varieties. It is so named for the way its leaves are wound tightly over one another, with the final product resembling a cannonball.',
+                            UIText(
+                              widget.product.details,
                               color: UIColors.blueZodiac,
                               fontWeight: FontWeight.w500,
                               fontSize: 13.7,
@@ -163,14 +184,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             padding: UIPaddings.all16,
             height: 90,
             width: double.infinity,
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ProductDetailsPriceDisplay(
-                  price: '6.90',
-                  originalPrice: '8.15',
+                  price: widget.product.price,
+                  originalPrice: widget.product.comparativePrice,
                 ),
-                AddToCartButton(),
+                const AddToCartButton(),
               ],
             ),
           ),
