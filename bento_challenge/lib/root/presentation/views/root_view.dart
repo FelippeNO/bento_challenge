@@ -1,53 +1,40 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
-import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
-import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
-import 'package:bento_challenge/product/data/product_details_data.dart';
-import 'package:bento_challenge/product/domain/entities/product_details_entity.dart';
 import 'package:bento_challenge/root/navbar/bar.dart';
+import 'package:bento_challenge/root/navbar/controller/my_bottom_nav_controller.dart';
 import 'package:bento_challenge/root/navbar/item.dart';
+import 'package:bento_challenge/root/presentation/views/account_view.dart';
+import 'package:bento_challenge/root/presentation/views/cart_view.dart';
+import 'package:bento_challenge/root/presentation/views/deals_view.dart';
+import 'package:bento_challenge/root/presentation/views/home_view.dart';
+import 'package:bento_challenge/root/presentation/views/market_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class RootView extends StatelessWidget {
-  const RootView({super.key});
+  RootView({super.key});
+
+  final List<Widget> _views = [
+    const HomeView(),
+    const DealsView(),
+    const MarketView(),
+    const CartView(),
+    const AccountView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     UIScale.init(context);
+
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 400),
-          Container(
-            color: Colors.white,
-            padding: const EdgeInsets.all(16),
-            child: Center(
-              child: AnimatedScaleUpScaleDownWidget(
-                onTap: () {
-                  Modular.to.pushNamed('/product/details', arguments: {
-                    'product': ProductDetailsEntity.fromMap(productDetailsData['products'][0]),
-                  });
-                },
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  color: UIColors.shamrock,
-                  child: Padding(
-                    padding: UIPaddings.all16,
-                    child: Hero(
-                      tag: 'product_image',
-                      child: Image.asset(
-                        'lib/assets/images/cabbage0.png',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: ValueListenableBuilder(
+          valueListenable: Modular.get<MyBottomNavBarController>().currentIndex,
+          builder: (context, value, child) {
+            return IndexedStack(
+              index: value,
+              children: _views,
+            );
+          }),
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: UIColors.alabaster,
         activeColor: UIColors.shamrock,
@@ -59,13 +46,15 @@ class RootView extends StatelessWidget {
         top: -60,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.map, title: 'Discovery'),
-          TabItem(icon: Icons.store, title: 'Add'),
-          TabItem(icon: Icons.message, title: 'Message'),
-          TabItem(icon: Icons.people, title: 'Profile'),
+          TabItem(icon: Icons.discount, title: 'Deals'),
+          TabItem(icon: Icons.store, title: 'Market'),
+          TabItem(icon: Icons.shopping_bag, title: 'Cart'),
+          TabItem(icon: Icons.person, title: 'Account'),
         ],
-        initialActiveIndex: 2,
-        onTap: (int i) => print('click index=$i'),
+        initialActiveIndex: 0,
+        onTap: (int i) => {
+          Modular.get<MyBottomNavBarController>().updateCurrentIndex(i),
+        },
       ),
     );
   }
