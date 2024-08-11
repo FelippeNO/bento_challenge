@@ -1,12 +1,12 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
+import 'package:bento_challenge/root/home/presentation/views/home_view.dart';
 import 'package:bento_challenge/root/navbar/bar.dart';
 import 'package:bento_challenge/root/navbar/controller/my_bottom_nav_controller.dart';
 import 'package:bento_challenge/root/navbar/item.dart';
 import 'package:bento_challenge/root/presentation/views/account_view.dart';
 import 'package:bento_challenge/root/presentation/views/cart_view.dart';
 import 'package:bento_challenge/root/presentation/views/deals_view.dart';
-import 'package:bento_challenge/root/presentation/views/home_view.dart';
 import 'package:bento_challenge/root/presentation/views/market_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

@@ -5,6 +5,8 @@ import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
 import 'package:bento_challenge/product/data/product_details_data.dart';
 import 'package:bento_challenge/product/domain/entities/product_details_entity.dart';
+import 'package:bento_challenge/root/home/data/food_kind_data.dart';
+import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -24,19 +26,20 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    UIText(
-                      'Delivery',
-                      fontWeight: FontWeight.w800,
-                    ),
-                    UIText(
-                      'Bacangan, Sambit',
-                      color: UIColors.baliHai,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UIText(
+                    'Delivery',
+                    fontWeight: FontWeight.w800,
+                  ),
+                  UIText(
+                    'Bacangan, Sambit',
+                    color: UIColors.baliHai,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ],
+              ),
               Container(
                 height: 40,
                 width: 40,
@@ -97,53 +100,7 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 25),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: UIPaddings.onlyHorizontal16,
-                      child: UIText(
-                        'Shop by category',
-                        fontWeight: FontWeight.w900,
-                        textAlign: TextAlign.start,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      height: 100,
-                      child: ListView.builder(
-                        padding: UIPaddings.onlyLeft16,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: UIPaddings.onlyRight8,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 70,
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                    color: UIColors.alabaster,
-                                    borderRadius: BorderRadius.circular(14),
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                const UIText(
-                                  'Vegan',
-                                  color: UIColors.blueZodiac,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                const ShopByCategorySession(),
                 const SizedBox(height: 16),
                 const Padding(
                   padding: UIPaddings.onlyHorizontal16,
@@ -164,17 +121,89 @@ class HomeView extends StatelessWidget {
                   ]),
                 ),
                 const SizedBox(height: 8),
-                GridView.count(
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  children: [
-                    for (int i = 0; i < productDetailsData['products'].length; i++)
-                      ProductSnapshotContainer(productDetailsData['products'][i]),
-                  ],
+                Padding(
+                  padding: UIPaddings.onlyHorizontal16,
+                  child: GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    childAspectRatio: 0.8,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    children: [
+                      for (int i = 0; i < productDetailsData['products'].length; i++)
+                        ProductSnapshotContainer(productDetailsData['products'][i]),
+                    ],
+                  ),
                 ),
+                SizedBox(height: 60 + UIScale.bottomDevicePadding),
               ],
             ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ShopByCategorySession extends StatelessWidget {
+  const ShopByCategorySession({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: UIPaddings.onlyHorizontal16,
+          child: UIText(
+            'Shop by category',
+            fontWeight: FontWeight.w900,
+            textAlign: TextAlign.start,
+            fontSize: 20,
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 100,
+          child: ListView.builder(
+            padding: UIPaddings.onlyLeft16,
+            scrollDirection: Axis.horizontal,
+            itemCount: foodKindData['kinds'].length,
+            itemBuilder: (context, index) {
+              final Map<String, dynamic> kind = foodKindData['kinds'][index];
+              final FoodKindEntity foodKind = FoodKindEntity.fromJson(kind);
+              return Padding(
+                padding: UIPaddings.onlyRight8,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                        color: UIColors.alabaster,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Padding(
+                        padding: UIPaddings.all8,
+                        child: Image.asset(
+                          foodKind.iconPath,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    UIText(
+                      foodKind.name,
+                      color: UIColors.blueZodiac,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
@@ -187,35 +216,30 @@ class ProductSnapshotContainer extends StatelessWidget {
 
   final Map<String, dynamic> productDetailsData;
 
+  ProductDetailsEntity get product => ProductDetailsEntity.fromMap(productDetailsData);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(16),
-      child: Center(
-        child: AnimatedScaleUpScaleDownWidget(
-          onTap: () {
-            Modular.to.pushNamed(
-              '/product/details',
-              arguments: {
-                'product': ProductDetailsEntity.fromMap(
-                  productDetailsData,
-                ),
-              },
-            );
+    return AnimatedScaleUpScaleDownWidget(
+      onTap: () {
+        Modular.to.pushNamed(
+          '/product/details',
+          arguments: {
+            'product': product,
           },
-          child: Container(
-            height: 200,
-            width: 200,
-            color: UIColors.shamrock,
-            child: Padding(
-              padding: UIPaddings.all16,
-              child: Hero(
-                tag: productDetailsData['images_path'][0],
-                child: Image.asset(
-                  productDetailsData['images_path'][0],
-                ),
-              ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          color: product.backgroundColor,
+        ),
+        child: Padding(
+          padding: UIPaddings.all16,
+          child: Hero(
+            tag: product.imagesPath[0],
+            child: Image.asset(
+              product.imagesPath[0],
             ),
           ),
         ),
