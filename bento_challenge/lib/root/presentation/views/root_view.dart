@@ -1,5 +1,7 @@
 import 'package:bento_challenge/core/design/ui_colors.dart';
+import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
+import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
 import 'package:bento_challenge/root/navbar/bar.dart';
 import 'package:bento_challenge/root/navbar/item.dart';
 import 'package:flutter/material.dart';
@@ -12,20 +14,35 @@ class RootView extends StatelessWidget {
   Widget build(BuildContext context) {
     UIScale.init(context);
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Container(
-            color: Colors.blue,
-            child: TextButton(
-              onPressed: () {
-                Modular.to.pushNamed('/product/details');
-              },
-              child: const Text('Go to Bar'),
+      body: Column(
+        children: [
+          const SizedBox(height: 400),
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: AnimatedScaleUpScaleDownWidget(
+                onTap: () {
+                  Modular.to.pushNamed('/product/details');
+                },
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  color: UIColors.shamrock,
+                  child: Padding(
+                    padding: UIPaddings.all16,
+                    child: Hero(
+                      tag: 'product_image',
+                      child: Image.asset(
+                        'lib/assets/images/cabbage.png',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: UIColors.alabaster,

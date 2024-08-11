@@ -10,7 +10,7 @@ class ProductImageCarouselSlider extends StatefulWidget {
   });
 
   final CarouselSliderController carouselController;
-  final List<Widget> list;
+  final List<String> list;
 
   @override
   State<ProductImageCarouselSlider> createState() => _ProductImageCarouselSliderState();
@@ -31,7 +31,7 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
             carouselController: widget.carouselController,
             itemCount: widget.list.length,
             itemBuilder: (context, index, realIndex) {
-              return widget.list[index];
+              return Hero(tag: 'product_image', child: Image.asset('lib/assets/images/${widget.list[index]}'));
             },
             options: CarouselOptions(
               height: 400,

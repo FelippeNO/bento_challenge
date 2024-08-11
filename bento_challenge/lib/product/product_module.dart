@@ -23,6 +23,8 @@ class ProductModule extends Module {
     r.child(
       '/details',
       child: (context) => const ProductDetailsView(),
+      transition: TransitionType.fadeIn,
+      duration: const Duration(milliseconds: 500),
     );
   }
 }

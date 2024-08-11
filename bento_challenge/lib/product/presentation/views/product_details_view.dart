@@ -23,34 +23,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   final ProductDetailsController controller = Modular.get<ProductDetailsController>();
 
   final CarouselSliderController carouselController = CarouselSliderController();
-  final List<Widget> list = [
-    Container(
-      color: Colors.red,
-      child: const Center(
-        child: Text(
-          'text',
-          style: TextStyle(fontSize: 16.0),
-        ),
-      ),
-    ),
-    Container(
-      color: Colors.blue,
-      child: const Center(
-        child: Text(
-          'text',
-          style: TextStyle(fontSize: 16.0),
-        ),
-      ),
-    ),
-    Container(
-      color: Colors.green,
-      child: const Center(
-        child: Text(
-          'text',
-          style: TextStyle(fontSize: 16.0),
-        ),
-      ),
-    )
+  final List<String> list = [
+    'cabbage.png',
+    'cabbage.png',
+    'cabbage.png',
   ];
 
   @override
