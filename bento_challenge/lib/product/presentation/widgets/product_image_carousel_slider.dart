@@ -23,10 +23,9 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 250,
           width: MediaQuery.of(context).size.width, // UIScale.widthDevice
-          color: Colors.red,
           child: CarouselSlider.builder(
             carouselController: widget.carouselController,
             itemCount: widget.list.length,
