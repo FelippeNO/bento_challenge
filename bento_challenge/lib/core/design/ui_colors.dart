@@ -10,4 +10,8 @@ class UIColors {
   static const Color beige = Color(0xfff2f6df);
   static const Color eggSour = Color(0xfffff4de);
   static const Color parisWhite = Color(0xffc4dad0);
+
+  static const Color mintJulep = Color(0xfff0f0bf);
+  static const Color cruise = Color(0xffc3f0f0);
+  static const Color madang = Color(0xffc2f0c1);
 }
