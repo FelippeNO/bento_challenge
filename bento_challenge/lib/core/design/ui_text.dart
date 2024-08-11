@@ -1,3 +1,4 @@
+import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:flutter/material.dart';
 
 enum FontFamilyEnum {
@@ -12,7 +13,7 @@ class UIText extends StatelessWidget {
   const UIText(
     this.text, {
     super.key,
-    this.color = Colors.black,
+    this.color = UIColors.blueZodiac,
     this.fontSize = 14,
     this.letterSpacing = -0.5,
     this.maxLines,
