@@ -8,7 +8,7 @@ abstract class IProductGateway {
 }
 
 class ProductGateway extends GatewayHandler implements IProductGateway {
-  final CoreMockedClient _client;
+  final IMockedClient _client;
 
   ProductGateway(this._client);
 
