@@ -126,7 +126,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 90 + UIScale.bottomDevicePadding + 8),
+                      SizedBox(height: 90 + UIScale.bottomDevicePadding + 16),
                     ],
                   ),
                 ),
@@ -159,7 +159,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             ),
           ),
           padding: UIPaddings.all16,
-          height: 90 + UIScale.bottomDevicePadding,
+          height: 90,
           width: double.infinity,
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

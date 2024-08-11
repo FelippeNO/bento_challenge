@@ -24,7 +24,7 @@ class ProductModule extends Module {
       '/details',
       child: (context) => const ProductDetailsView(),
       transition: TransitionType.fadeIn,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
     );
   }
 }
