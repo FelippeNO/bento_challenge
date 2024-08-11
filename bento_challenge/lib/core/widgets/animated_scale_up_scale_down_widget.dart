@@ -5,8 +5,8 @@ class AnimatedScaleUpScaleDownWidget extends StatefulWidget {
     super.key,
     required this.child,
     this.onTap,
-    required this.animationDuration,
-    required this.scaleDownFactor,
+    this.animationDuration = const Duration(milliseconds: 80),
+    this.scaleDownFactor = 0.8,
   });
 
   final Widget child;

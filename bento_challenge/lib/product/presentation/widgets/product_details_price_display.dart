@@ -42,7 +42,7 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
 
     _lineController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 600),
     );
 
     _lineAnimation = Tween<double>(begin: 0, end: 1).animate(

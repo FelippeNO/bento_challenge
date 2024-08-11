@@ -43,8 +43,6 @@ class _AnimatedIconTwoStatesButtonState extends State<AnimatedIconTwoStatesButto
   @override
   Widget build(BuildContext context) {
     return AnimatedScaleUpScaleDownWidget(
-      animationDuration: const Duration(milliseconds: 80),
-      scaleDownFactor: 0.8,
       onTap: () {
         _toggleFavorite();
       },
