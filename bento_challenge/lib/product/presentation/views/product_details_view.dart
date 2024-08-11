@@ -1,6 +1,7 @@
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/widgets/animated_icon_two_states_button.dart';
 import 'package:bento_challenge/product/presentation/views/controllers/product_details_controller.dart';
+import 'package:bento_challenge/product/presentation/widgets/add_to_cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -47,7 +48,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   const ProductAvaliationContainer(avaliation: '4.5'),
                 ],
               ),
-              const ProductCategoryBar()
+              const ProductCategoryBar(),
+              const AddToCartButton(),
             ],
           ),
         ),
