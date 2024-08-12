@@ -15,4 +15,5 @@ class UIColors {
   static const Color madang = Color(0xffc2f0c1);
   static const Color riceColor = Color(0xffedffe4);
   static const Color loblolly = Color(0xffbdc3c9);
+  static const Color whiteIce = Color(0xffe5fbf1);
 }
