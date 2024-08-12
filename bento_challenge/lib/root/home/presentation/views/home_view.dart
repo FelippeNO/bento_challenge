@@ -3,13 +3,13 @@ import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/product/data/product_details_data.dart';
-import 'package:bento_challenge/root/home/data/food_kind_data.dart';
-import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
 import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../widgets/change_place_animated_widget.dart';
 import '../widgets/product_snapshot_container.dart';
+import '../widgets/shop_by_category_session.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -47,11 +47,7 @@ class _HomeViewState extends State<HomeView> {
                     'Delivery',
                     fontWeight: FontWeight.w800,
                   ),
-                  UIText(
-                    'Bacangan, Sambit',
-                    color: UIColors.baliHai,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  ChangePlaceAnimatedWidget(),
                 ],
               ),
               Container(
@@ -153,71 +149,6 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(height: 60 + UIScale.bottomDevicePadding),
               ],
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class ShopByCategorySession extends StatelessWidget {
-  const ShopByCategorySession({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: UIPaddings.onlyHorizontal16,
-          child: UIText(
-            'Shop by category',
-            fontWeight: FontWeight.w900,
-            textAlign: TextAlign.start,
-            fontSize: 20,
-          ),
-        ),
-        const SizedBox(height: 8),
-        SizedBox(
-          height: 100,
-          child: ListView.builder(
-            padding: UIPaddings.onlyLeft16,
-            scrollDirection: Axis.horizontal,
-            itemCount: foodKindData['kinds'].length,
-            itemBuilder: (context, index) {
-              final Map<String, dynamic> kind = foodKindData['kinds'][index];
-              final FoodKindEntity foodKind = FoodKindEntity.fromJson(kind);
-              return Padding(
-                padding: UIPaddings.onlyRight8,
-                child: Column(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                        color: UIColors.alabaster,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Padding(
-                        padding: UIPaddings.all8,
-                        child: Image.asset(
-                          foodKind.iconPath,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    UIText(
-                      foodKind.name,
-                      color: UIColors.blueZodiac,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ],
-                ),
-              );
-            },
           ),
         ),
       ],
