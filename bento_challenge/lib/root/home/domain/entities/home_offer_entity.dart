@@ -25,9 +25,15 @@ class HomeOfferEntity {
       title: json['title'],
       imagePath: json['imagePath'],
       callToActionText: json['callToActionText'],
-      imageLayout: ImageLayoutEnum.values.firstWhere((e) => e.toString() == json['imageLayout']),
-      callToActionStyle: CallToActionStyleEnum.values.firstWhere((e) => e.toString() == json['callToActionStyle']),
-      backgroundColor: Color(int.parse(json['backgroundColor'])),
+      imageLayout: ImageLayoutEnum.values.firstWhere((e) => e.name.toString() == json['imageLayout']),
+      callToActionStyle: CallToActionStyleEnum.values.firstWhere((e) => e.name.toString() == json['callToActionStyle']),
+      backgroundColor: Color(
+        int.parse(
+              json['backgroundColor'].substring(1, 7),
+              radix: 16,
+            ) +
+            0xFF000000,
+      ),
     );
   }
 }

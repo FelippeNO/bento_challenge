@@ -4,7 +4,9 @@ import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/product/data/product_details_data.dart';
 import 'package:bento_challenge/root/home/data/home_highlight_data.dart';
+import 'package:bento_challenge/root/home/data/home_offer_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
+import 'package:bento_challenge/root/home/domain/entities/home_offer_entity.dart';
 import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -38,6 +40,13 @@ class _HomeViewState extends State<HomeView> {
         title: homeHighlightsData['highlights'][index]['title'],
         iconPath: homeHighlightsData['highlights'][index]['icon_path'],
       ),
+    );
+  }
+
+  List<HomeOfferEntity> getOffers() {
+    return List.generate(
+      3,
+      (index) => HomeOfferEntity.fromJson(homeOfferData['offers'][index]),
     );
   }
 
@@ -84,7 +93,7 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   HomeHighlightsSession(highlights: getHighlights()),
                   const SizedBox(height: 16),
-                  const OffersMainCarousel(),
+                  OffersMainCarousel(offers: getOffers()),
                   const SizedBox(height: 25),
                   const AnimatedShopByCategorySession(),
                   const SizedBox(height: 16),
