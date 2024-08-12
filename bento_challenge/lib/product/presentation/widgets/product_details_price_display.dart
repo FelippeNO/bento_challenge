@@ -65,8 +65,8 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
         const UIText(
           'Price',
           fontSize: 14,
-          fontWeight: FontWeight.w800,
-          color: UIColors.baliHai,
+          fontWeight: FontWeight.w700,
+          color: UIColors.loblolly,
         ),
         Row(
           children: [
@@ -89,7 +89,7 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
               TweenAnimationBuilder<Color?>(
                   tween: ColorTween(
                     begin: UIColors.blueZodiac,
-                    end: UIColors.baliHai,
+                    end: UIColors.loblolly,
                   ),
                   duration: const Duration(milliseconds: 800),
                   builder: (context, color, child) {
@@ -105,7 +105,7 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
                             '\$${widget.originalPrice}',
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
-                            color: color ?? UIColors.baliHai,
+                            color: color ?? UIColors.loblolly,
                           ),
                           AnimatedBuilder(
                             animation: _lineAnimation,

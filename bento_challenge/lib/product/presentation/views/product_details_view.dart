@@ -172,11 +172,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         child: Padding(
           padding: EdgeInsets.only(bottom: UIScale.bottomDevicePadding),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               border: Border(
                 top: BorderSide(
-                  color: UIColors.baliHai.withOpacity(0.5),
+                  color: UIColors.alabaster,
                   width: 1,
                 ),
               ),

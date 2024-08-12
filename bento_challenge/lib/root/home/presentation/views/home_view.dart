@@ -5,12 +5,27 @@ import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/product/data/product_details_data.dart';
 import 'package:bento_challenge/root/home/data/food_kind_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
+import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../widgets/product_snapshot_container.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final HomeViewController homeViewController = Modular.get();
+
+  @override
+  void initState() {
+    super.initState();
+    homeViewController.init();
+  }
 
   @override
   Widget build(BuildContext context) {

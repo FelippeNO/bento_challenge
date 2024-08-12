@@ -81,6 +81,6 @@ class _AppSplashViewState extends State<AppSplashView> {
   }
 
   handleInitialView() async {
-    Modular.to.pushNamedAndRemoveUntil('/root', (_) => false);
+    Modular.to.pushNamedAndRemoveUntil('/root/', (_) => false);
   }
 }
