@@ -1,6 +1,7 @@
-import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/widgets/carousel_page_dots.dart';
 
 class ProductImageCarouselSlider extends StatefulWidget {
   const ProductImageCarouselSlider({
@@ -49,25 +50,7 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
             ),
           ),
         ),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            for (var i = 0; i < widget.images.length; i++)
-              Padding(
-                padding: const EdgeInsets.only(right: 4),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  width: _currentIndex == i ? 25 : 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    color: _currentIndex == i ? UIColors.shamrock : UIColors.parisWhite,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ),
-          ],
-        ),
+        CarouselPageDots(length: widget.images.length, currentIndex: _currentIndex),
       ],
     );
   }

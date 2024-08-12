@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../widgets/change_place_animated_widget.dart';
+import '../widgets/offers_main_carousel.dart';
 import '../widgets/product_snapshot_container.dart';
 import '../widgets/shop_by_category_session.dart';
 
@@ -99,18 +100,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Padding(
-                    padding: UIPaddings.onlyHorizontal16,
-                    child: AspectRatio(
-                      aspectRatio: 2.25,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: UIColors.beige,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
-                    ),
-                  ),
+                  const OffersMainCarousel(),
                   const SizedBox(height: 25),
                   const AnimatedShopByCategorySession(),
                   const SizedBox(height: 16),
