@@ -3,11 +3,14 @@ import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/product/data/product_details_data.dart';
+import 'package:bento_challenge/root/home/data/home_highlight_data.dart';
+import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
 import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../widgets/change_place_animated_widget.dart';
+import '../widgets/home_highlights_session.dart';
 import '../widgets/offers_main_carousel.dart';
 import '../widgets/product_snapshot_container.dart';
 import '../widgets/shop_by_category_session.dart';
@@ -26,6 +29,16 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     homeViewController.init();
+  }
+
+  List<HomeHighlightEntity> getHighlights() {
+    return List.generate(
+      2,
+      (index) => HomeHighlightEntity(
+        title: homeHighlightsData['highlights'][index]['title'],
+        iconPath: homeHighlightsData['highlights'][index]['icon_path'],
+      ),
+    );
   }
 
   @override
@@ -69,36 +82,7 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: UIPaddings.onlyHorizontal16,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: AspectRatio(
-                            aspectRatio: 2.25,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: UIColors.shamrock,
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: AspectRatio(
-                            aspectRatio: 2.25,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: UIColors.shamrock,
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  HomeHighlightsSession(highlights: getHighlights()),
                   const SizedBox(height: 16),
                   const OffersMainCarousel(),
                   const SizedBox(height: 25),
