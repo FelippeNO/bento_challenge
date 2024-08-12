@@ -110,6 +110,7 @@ class _HomeViewState extends State<HomeView> {
                   Padding(
                     padding: UIPaddings.onlyHorizontal16,
                     child: GridView.count(
+                      padding: UIPaddings.onlyTop8,
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: 2,
                       shrinkWrap: true,
