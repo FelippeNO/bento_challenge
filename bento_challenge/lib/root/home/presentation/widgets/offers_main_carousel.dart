@@ -33,7 +33,7 @@ class _OffersMainCarouselState extends State<OffersMainCarousel> {
             return HomeOfferContainer(offer: offer);
           },
           options: CarouselOptions(
-            autoPlay: true,
+            autoPlay: false,
             aspectRatio: 2.25,
             viewportFraction: 1,
             initialPage: 0,

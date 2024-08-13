@@ -96,11 +96,7 @@ class _HomeOfferContainerImageRightLayout extends StatelessWidget {
                 color: UIColors.lynch,
               ),
               if (offer.smallText != null) const Spacer(),
-              UIText(
-                offer.title,
-                fontSize: 16,
-                fontWeight: FontWeight.w900,
-              ),
+              _OfferTitle(offer: offer),
               const Spacer(),
               if (offer.callToActionText != null) _CallToActionWidget(offer),
               if (offer.callToActionText != null) const Spacer(),
@@ -116,6 +112,23 @@ class _HomeOfferContainerImageRightLayout extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _OfferTitle extends StatelessWidget {
+  const _OfferTitle({
+    required this.offer,
+  });
+
+  final HomeOfferEntity offer;
+
+  @override
+  Widget build(BuildContext context) {
+    return UIText(
+      offer.title,
+      fontSize: 16,
+      fontWeight: FontWeight.w900,
     );
   }
 }
@@ -138,16 +151,6 @@ class _HomeOfferContainerImageLeftLayout extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(offer.imagePath, width: UIScale.width(30)),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Spacer(),
               UIText(
                 offer.smallText ?? '',
                 fontSize: 13,
@@ -156,11 +159,17 @@ class _HomeOfferContainerImageLeftLayout extends StatelessWidget {
                 color: UIColors.lynch,
               ),
               if (offer.smallText != null) const Spacer(),
-              UIText(
-                offer.title,
-                fontSize: 16,
-                fontWeight: FontWeight.w900,
-              ),
+              Image.asset(offer.imagePath, width: UIScale.width(30)),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Spacer(),
+              _OfferTitle(offer: offer),
               const Spacer(),
               if (offer.callToActionText != null) _CallToActionWidget(offer),
               if (offer.callToActionText != null) const Spacer(),
@@ -200,30 +209,18 @@ class _HomeOfferContainerImageCenterLayout extends StatelessWidget {
                 color: UIColors.lynch,
               ),
               if (offer.smallText != null) const Spacer(),
-              UIText(
-                offer.title,
-                fontSize: 16,
-                fontWeight: FontWeight.w900,
-              ),
+              _OfferTitle(offer: offer),
             ],
           ),
         ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(offer.imagePath, width: UIScale.width(30)),
-            ],
-          ),
-        ),
-        Expanded(
-            child: Column(
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(offer.imagePath, width: UIScale.width(30)),
             const Spacer(),
             if (offer.callToActionText != null) _CallToActionWidget(offer),
-            if (offer.callToActionText != null) const Spacer(),
           ],
-        )),
+        ),
       ],
     );
   }
