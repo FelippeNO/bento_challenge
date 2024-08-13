@@ -24,6 +24,21 @@ const Map<String, dynamic> foodKindData = {
       'id': 5,
       'name': 'Fish',
       'icon_path': './lib/assets/png_icons/fish.png',
-    }
+    },
+    {
+      'id': 6,
+      'name': 'Grains',
+      'icon_path': './lib/assets/png_icons/grain.png',
+    },
+    {
+      'id': 7,
+      'name': 'Sweets',
+      'icon_path': './lib/assets/png_icons/sweet.png',
+    },
+    {
+      'id': 8,
+      'name': 'Beverages',
+      'icon_path': './lib/assets/png_icons/beverage.png',
+    },
   ],
 };
