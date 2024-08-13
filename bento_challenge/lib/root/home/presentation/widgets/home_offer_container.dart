@@ -26,61 +26,232 @@ class HomeOfferContainer extends StatelessWidget {
             color: offer.backgroundColor,
             borderRadius: BorderRadius.circular(14),
           ),
-          child: Row(
+          child: Builder(builder: (context) {
+            return switch (offer.imageLayout) {
+              ImageLayoutEnum.left => _HomeOfferContainerImageLeftLayout(offer),
+              ImageLayoutEnum.right => _HomeOfferContainerImageRightLayout(offer),
+              ImageLayoutEnum.center => _HomeOfferContainerImageCenterLayout(offer),
+            };
+          }),
+        ),
+      ),
+    );
+  }
+}
+
+class _CallToActionContainer extends StatelessWidget {
+  const _CallToActionContainer(
+    this.callToActionText, {
+    required this.backgroundColor,
+    required this.textColor,
+  });
+
+  final String? callToActionText;
+  final Color backgroundColor;
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: UIText(
+        callToActionText.toString(),
+        color: textColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+}
+
+class _HomeOfferContainerImageRightLayout extends StatelessWidget {
+  const _HomeOfferContainerImageRightLayout(
+    this.offer,
+  );
+
+  final HomeOfferEntity offer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
             children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Spacer(),
-                    UIText(
-                      offer.smallText ?? '',
-                      fontSize: 13,
-                      textAlign: TextAlign.start,
-                      fontWeight: FontWeight.w800,
-                      color: UIColors.lynch,
-                    ),
-                    if (offer.smallText != null) const Spacer(),
-                    UIText(
-                      offer.title,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                    ),
-                    const Spacer(),
-                    if (offer.callToActionText != null)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: UIColors.blueZodiac,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: UIText(
-                          offer.callToActionText!,
-                          color: UIColors.shamrock,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    if (offer.callToActionText != null) const Spacer(),
-                  ],
-                ),
+              const Spacer(),
+              UIText(
+                offer.smallText ?? '',
+                fontSize: 13,
+                textAlign: TextAlign.start,
+                fontWeight: FontWeight.w800,
+                color: UIColors.lynch,
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(offer.imagePath, width: UIScale.width(30)),
-                  ],
-                ),
+              if (offer.smallText != null) const Spacer(),
+              UIText(
+                offer.title,
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
+              ),
+              const Spacer(),
+              if (offer.callToActionText != null) _CallToActionWidget(offer),
+              if (offer.callToActionText != null) const Spacer(),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(offer.imagePath, width: UIScale.width(30)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HomeOfferContainerImageLeftLayout extends StatelessWidget {
+  const _HomeOfferContainerImageLeftLayout(
+    this.offer,
+  );
+
+  final HomeOfferEntity offer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(offer.imagePath, width: UIScale.width(30)),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Spacer(),
+              UIText(
+                offer.smallText ?? '',
+                fontSize: 13,
+                textAlign: TextAlign.start,
+                fontWeight: FontWeight.w800,
+                color: UIColors.lynch,
+              ),
+              if (offer.smallText != null) const Spacer(),
+              UIText(
+                offer.title,
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
+              ),
+              const Spacer(),
+              if (offer.callToActionText != null) _CallToActionWidget(offer),
+              if (offer.callToActionText != null) const Spacer(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HomeOfferContainerImageCenterLayout extends StatelessWidget {
+  const _HomeOfferContainerImageCenterLayout(
+    this.offer,
+  );
+
+  final HomeOfferEntity offer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Spacer(),
+              UIText(
+                offer.smallText ?? '',
+                fontSize: 13,
+                textAlign: TextAlign.start,
+                fontWeight: FontWeight.w800,
+                color: UIColors.lynch,
+              ),
+              if (offer.smallText != null) const Spacer(),
+              UIText(
+                offer.title,
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
               ),
             ],
           ),
         ),
-      ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(offer.imagePath, width: UIScale.width(30)),
+            ],
+          ),
+        ),
+        Expanded(
+            child: Column(
+          children: [
+            const Spacer(),
+            if (offer.callToActionText != null) _CallToActionWidget(offer),
+            if (offer.callToActionText != null) const Spacer(),
+          ],
+        )),
+      ],
     );
+  }
+}
+
+class _CallToActionWidget extends StatelessWidget {
+  const _CallToActionWidget(this.offer);
+  final HomeOfferEntity offer;
+
+  @override
+  Widget build(BuildContext context) {
+    return switch (offer.callToActionStyle) {
+      CallToActionStyleEnum.primary => _CallToActionContainer(
+          offer.callToActionText,
+          backgroundColor: UIColors.blueZodiac,
+          textColor: UIColors.shamrock,
+        ),
+      CallToActionStyleEnum.secondary => _CallToActionContainer(
+          offer.callToActionText,
+          backgroundColor: UIColors.lightningYellow,
+          textColor: UIColors.blueZodiac,
+        ),
+      CallToActionStyleEnum.tertiary => _CallToActionContainer(
+          offer.callToActionText,
+          backgroundColor: UIColors.deepBlush,
+          textColor: Colors.white,
+        ),
+      _ => const SizedBox()
+    };
   }
 }

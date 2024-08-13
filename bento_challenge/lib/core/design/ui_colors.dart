@@ -17,6 +17,7 @@ class UIColors {
   static const Color loblolly = Color(0xffbdc3c9);
   static const Color whiteIce = Color(0xffe5fbf1);
   static const Color lynch = Color(0xff5d778a);
+  static const Color deepBlush = Color.fromARGB(255, 230, 124, 124);
 
   static const shimmerBaseColor = alabaster;
   static const shimmerHighlightColor = Color.fromARGB(255, 234, 234, 234);
