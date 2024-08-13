@@ -1,5 +1,9 @@
+import 'package:bento_challenge/core/enums/basic_state_view.dart';
 import 'package:bento_challenge/root/home/data/food_kind_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
+import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
+import 'package:bento_challenge/root/home/domain/entities/home_offer_entity.dart';
+import 'package:bento_challenge/root/home/domain/entities/home_products_session_entity.dart';
 import 'package:bento_challenge/root/home/domain/services/get_food_kinds_service.dart';
 import 'package:bento_challenge/root/home/domain/services/get_home_highlights_service.dart';
 import 'package:bento_challenge/root/home/domain/services/get_home_offers_service.dart';
@@ -27,11 +31,28 @@ class HomeViewController extends ChangeNotifier {
   ];
   ValueNotifier<String> selectedCity = ValueNotifier('Bacangan, Sambit');
   ValueNotifier<int> selectedFoodKindId = ValueNotifier(1);
-  ValueNotifier<bool> isGettinKinds = ValueNotifier(false);
-  List<FoodKindEntity> foodKinds = [];
-  final ValueNotifier<List<int>> _productInCartIds = ValueNotifier([]);
 
+  //declaration
+  final ValueNotifier<List<int>> _productInCartIds = ValueNotifier([]);
+  final ValueNotifier<BasicStateView> _homeProductSessionsState = ValueNotifier(BasicStateView.loading);
+  final ValueNotifier<BasicStateView> _foodKindsState = ValueNotifier(BasicStateView.loading);
+  final ValueNotifier<BasicStateView> _homeHighlightsState = ValueNotifier(BasicStateView.loading);
+  final ValueNotifier<BasicStateView> _homeOffersState = ValueNotifier(BasicStateView.loading);
+  final List<FoodKindEntity> _foodKinds = [];
+  final List<HomeHighlightEntity> _homeHighlights = [];
+  final List<HomeOfferEntity> _homeOffers = [];
+  final List<HomeProductsSessionEntity> _homeProductSessions = [];
+
+  //getters
   ValueNotifier<List<int>> get productInCartIds => _productInCartIds;
+  ValueNotifier<BasicStateView> get foodKindsState => _foodKindsState;
+  ValueNotifier<BasicStateView> get homeHighlightsState => _homeHighlightsState;
+  ValueNotifier<BasicStateView> get homeOffersState => _homeOffersState;
+  ValueNotifier<BasicStateView> get homeProductSessionsState => _homeProductSessionsState;
+  List<FoodKindEntity> get foodKinds => _foodKinds;
+  List<HomeHighlightEntity> get homeHighlights => _homeHighlights;
+  List<HomeOfferEntity> get homeOffers => _homeOffers;
+  List<HomeProductsSessionEntity> get homeProductSessions => _homeProductSessions;
 
   void setSelectedCity(String city) {
     selectedCity.value = city;
@@ -59,32 +80,89 @@ class HomeViewController extends ChangeNotifier {
   Future _getFoodKinds() async {
     final result = await _getFoodKindsService.call();
     result.fold(
-      (failure) => print('Error: $failure'),
-      (data) {},
+      (failure) {
+        debugPrint(failure.toString());
+        _foodKindsState.value = BasicStateView.error;
+        _foodKindsState.notifyListeners();
+      },
+      (data) {
+        _foodKinds.clear();
+        if (data.isEmpty) {
+          _foodKindsState.value = BasicStateView.empty;
+          _foodKindsState.notifyListeners();
+          return;
+        }
+
+        _foodKinds.addAll(data);
+        _foodKindsState.value = BasicStateView.success;
+        _foodKindsState.notifyListeners();
+      },
     );
   }
 
   Future _getHomeHighlights() async {
     final result = await _getHomeHighlightsService.call();
     result.fold(
-      (failure) => print('Error: $failure'),
-      (data) {},
+      (failure) {
+        debugPrint(failure.toString());
+        _homeHighlightsState.value = BasicStateView.error;
+        _homeHighlightsState.notifyListeners();
+      },
+      (data) {
+        _homeHighlights.clear();
+        if (data.isEmpty) {
+          _homeHighlightsState.value = BasicStateView.empty;
+          _homeHighlightsState.notifyListeners();
+          return;
+        }
+        _homeHighlights.addAll(data);
+        _homeHighlightsState.value = BasicStateView.success;
+        _homeHighlightsState.notifyListeners();
+      },
     );
   }
 
   Future _getHomeOffers() async {
     final result = await _getHomeOffersService.call();
     result.fold(
-      (failure) => print('Error: $failure'),
-      (data) {},
+      (failure) {
+        debugPrint(failure.toString());
+        _homeOffersState.value = BasicStateView.error;
+        _homeOffersState.notifyListeners();
+      },
+      (data) {
+        _homeOffers.clear();
+        if (data.isEmpty) {
+          _homeOffersState.value = BasicStateView.empty;
+          _homeOffersState.notifyListeners();
+          return;
+        }
+        _homeOffers.addAll(data);
+        _homeOffersState.value = BasicStateView.success;
+        _homeOffersState.notifyListeners();
+      },
     );
   }
 
   Future _getHomeProductSessions() async {
     final result = await _getHomeProductSessionsService.call();
     result.fold(
-      (failure) => print('Error: $failure'),
-      (data) {},
+      (failure) {
+        debugPrint(failure.toString());
+        _homeProductSessionsState.value = BasicStateView.error;
+        _homeProductSessionsState.notifyListeners();
+      },
+      (data) {
+        _homeProductSessions.clear();
+        if (data.isEmpty) {
+          _homeProductSessionsState.value = BasicStateView.empty;
+          _homeProductSessionsState.notifyListeners();
+          return;
+        }
+        _homeProductSessions.addAll(data);
+        _homeProductSessionsState.value = BasicStateView.success;
+        _homeProductSessionsState.notifyListeners();
+      },
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
+import 'package:bento_challenge/core/enums/basic_state_view.dart';
 import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -30,14 +31,10 @@ class _AnimatedShopByCategorySessionState extends State<AnimatedShopByCategorySe
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: Modular.get<HomeViewController>().isGettinKinds,
-      builder: (context, isGettingNiches, child) {
-        if (isGettingNiches) {
-          return const SizedBox();
-        }
-
-        if (!isGettingNiches && Modular.get<HomeViewController>().foodKinds.isEmpty) {
-          return const SizedBox();
+      valueListenable: Modular.get<HomeViewController>().foodKindsState,
+      builder: (context, foodKindsState, child) {
+        if (foodKindsState != BasicStateView.success) {
+          return const SizedBox.shrink();
         }
 
         return ValueListenableBuilder(
