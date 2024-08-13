@@ -32,7 +32,7 @@ Let's talk about something serious now.
 
 ## Project Structure and Technologies
 
-This project is a mobile application developed in Flutter, using clean architecture with Domain-Driven Design (DDD) to provide a robust and scalable code structure.
+This project is a mobile application developed in Flutter, using Clean Architecture with Domain-Driven Design (DDD) to provide a robust and scalable code structure.
 
 ### Technologies Used
 

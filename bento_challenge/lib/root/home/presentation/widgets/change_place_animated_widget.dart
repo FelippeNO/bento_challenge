@@ -36,7 +36,7 @@ class _ChangePlaceAnimatedWidgetState extends State<ChangePlaceAnimatedWidget> w
 
     _heightAnimation = CurvedAnimation(
       parent: _animationController,
-      curve: const MyElasticOutCurve(0.5),
+      curve: const MyElasticOutCurve(0.7),
     );
 
     _arrowAnimation = Tween<double>(begin: 0, end: 0.5).animate(
@@ -81,6 +81,7 @@ class _ChangePlaceAnimatedWidgetState extends State<ChangePlaceAnimatedWidget> w
                 sizeFactor: _heightAnimation,
                 child: Container(
                   margin: const EdgeInsets.only(top: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -100,7 +101,7 @@ class _ChangePlaceAnimatedWidgetState extends State<ChangePlaceAnimatedWidget> w
                               _removeOverlay();
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              padding: const EdgeInsets.symmetric(vertical: 8),
                               child: UIText(
                                 city,
                                 fontWeight: FontWeight.w500,
@@ -108,14 +109,11 @@ class _ChangePlaceAnimatedWidgetState extends State<ChangePlaceAnimatedWidget> w
                               ),
                             ),
                           ),
-                        const Padding(
-                          padding: UIPaddings.onlyHorizontal16,
-                          child: Divider(
-                            color: UIColors.alabaster,
-                          ),
+                        const Divider(
+                          color: UIColors.alabaster,
                         ),
                         const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 4),
+                          padding: EdgeInsets.symmetric(vertical: 5),
                           child: Row(
                             children: [
                               Icon(
