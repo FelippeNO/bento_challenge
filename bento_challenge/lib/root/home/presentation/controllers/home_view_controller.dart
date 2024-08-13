@@ -1,15 +1,30 @@
 import 'package:bento_challenge/root/home/data/food_kind_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
+import 'package:bento_challenge/root/home/domain/services/get_food_kinds_service.dart';
+import 'package:bento_challenge/root/home/domain/services/get_home_highlights_service.dart';
+import 'package:bento_challenge/root/home/domain/services/get_home_offers_service.dart';
+import 'package:bento_challenge/root/home/domain/services/get_home_product_sessions_service.dart';
 import 'package:flutter/foundation.dart';
 
 class HomeViewController extends ChangeNotifier {
+  final GetFoodKindsService _getFoodKindsService;
+  final GetHomeHighlightsService _getHomeHighlightsService;
+  final GetHomeOffersService _getHomeOffersService;
+  final GetHomeProductSessionsService _getHomeProductSessionsService;
+
+  HomeViewController(
+    this._getFoodKindsService,
+    this._getHomeHighlightsService,
+    this._getHomeOffersService,
+    this._getHomeProductSessionsService,
+  );
+
   List<String> cities = [
     'Bacangan, Sambit',
     'Eostolia, Rizo',
     'Keloa, Fuchi',
     'Modesto, Linya',
   ];
-
   ValueNotifier<String> selectedCity = ValueNotifier('Bacangan, Sambit');
   ValueNotifier<int> selectedFoodKindId = ValueNotifier(1);
   ValueNotifier<bool> isGettinKinds = ValueNotifier(false);
@@ -24,6 +39,13 @@ class HomeViewController extends ChangeNotifier {
   }
 
   init() async {
+    Future.wait([
+      _getFoodKinds(),
+      _getHomeHighlights(),
+      _getHomeOffers(),
+      _getHomeProductSessions(),
+    ]);
+
     final data = foodKindData['kinds'] as List<Map<String, dynamic>>;
 
     for (var item in data) {
@@ -33,6 +55,11 @@ class HomeViewController extends ChangeNotifier {
     selectedFoodKindId.value = foodKinds.first.id;
     selectedFoodKindId.notifyListeners();
   }
+
+  Future _getFoodKinds() async {}
+  Future _getHomeHighlights() async {}
+  Future _getHomeOffers() async {}
+  Future _getHomeProductSessions() async {}
 
   addOrRemoveProductFromCart(int productId) {
     if (_productInCartIds.value.contains(productId)) {
