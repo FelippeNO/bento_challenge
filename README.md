@@ -52,7 +52,7 @@ For managing views, `ValueNotifier` is used, a native Flutter solution that allo
 
 ## Packages Used
 
-### [flutter_modular](https://pub.dev/packages/flutter_modular) ^6.3.4
+### [flutter_modular](https://pub.dev/packages/flutter_modular) 6.3.4
 
 Facilitates navigation and dependency injection, promoting a modular architecture where each module has its routes and injections.
 
@@ -62,7 +62,7 @@ Facilitates navigation and dependency injection, promoting a modular architectur
 - Route management.
 - Dependency injection.
 
-### [dartz](https://pub.dev/packages/dartz) ^0.10.1
+### [dartz](https://pub.dev/packages/dartz) 0.10.1
 
 Brings functional programming concepts to Dart, such as optional types and immutable collections, helping to avoid runtime errors.
 
@@ -72,7 +72,7 @@ Brings functional programming concepts to Dart, such as optional types and immut
 - Promotes safety and clarity in error handling.
 - Immutable operations.
 
-### [lottie](https://pub.dev/packages/lottie) ^3.1.2
+### [lottie](https://pub.dev/packages/lottie) 3.1.2
 
 Renders animations exported from Adobe After Effects as JSON files, allowing for the creation of dynamic and engaging interfaces.
 
@@ -82,7 +82,7 @@ Renders animations exported from Adobe After Effects as JSON files, allowing for
 - Easy integration with Flutter interfaces.
 - High-performance animations.
 
-### [carousel_slider](https://pub.dev/packages/carousel_slider) ^5.0.0
+### [carousel_slider](https://pub.dev/packages/carousel_slider) 5.0.0
 
 Allows for easy creation of image sliders/carousels, ideal for highlighting content visually.
 
@@ -92,7 +92,7 @@ Allows for easy creation of image sliders/carousels, ideal for highlighting cont
 - Support for multiple customization options.
 - Easy to integrate and use.
 
-### [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar) ^3.2.0
+### [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar) 3.2.0
 
 Although not included directly in the dependencies, the `convex_bottom_bar` package was used by downloading and modifying its code to adapt the navigation bar to fit the specific needs of the project.
 
@@ -100,6 +100,24 @@ Although not included directly in the dependencies, the `convex_bottom_bar` pack
 
 - Enhanced navigation bar functionality.
 - Tailored UI adjustments for project requirements.
+
+### [shimmer](https://pub.dev/packages/shimmer) 3.0.0
+
+Creates shimmering effects to indicate loading content, enhancing the user experience during data retrieval.
+
+**Key Features:**
+
+- Easy to implement loading animations.
+- Enhances user feedback during loading states.
+
+### [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) 0.13.1
+
+Automates the generation of application launcher icons for Android and iOS, ensuring consistency across different devices and screen sizes.
+
+**Key Features:**
+
+- Simplifies the creation of launcher icons.
+- Supports adaptive icons for Android.
 
 ## Fun Facts
 
