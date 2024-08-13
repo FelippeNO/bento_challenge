@@ -69,7 +69,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
             left: 0,
             right: 0,
             child: ConvexAppBar(
-              backgroundColor: UIColors.alabaster,
+              backgroundColor: Colors.white,
               activeColor: UIColors.shamrock,
               color: UIColors.fringyFlower,
               style: TabStyle.fixedCircle,
