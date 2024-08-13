@@ -22,7 +22,7 @@ class HomeGateway extends GatewayHandler implements IHomeGateway {
   Future<List<FoodKindEntity>> getFoodKinds() async {
     return call(
       requisitionCallback: () => _client.get('/home/food_kinds'),
-      onSuccessCallback: (data) => List<FoodKindEntity>.from(data.map((x) => FoodKindEntity.fromJson(x))),
+      onSuccessCallback: (data) => List<FoodKindEntity>.from(data['kinds'].map((x) => FoodKindEntity.fromJson(x))),
       exception: GetFoodKindsException(),
     );
   }
@@ -31,7 +31,8 @@ class HomeGateway extends GatewayHandler implements IHomeGateway {
   Future<List<HomeHighlightEntity>> getHomeHighlights() async {
     return call(
       requisitionCallback: () => _client.get('/home/highlights'),
-      onSuccessCallback: (data) => List<HomeHighlightEntity>.from(data.map((x) => HomeHighlightEntity.fromJson(x))),
+      onSuccessCallback: (data) =>
+          List<HomeHighlightEntity>.from(data['highlights'].map((x) => HomeHighlightEntity.fromJson(x))),
       exception: GetHomeHighlightsException(),
     );
   }
@@ -40,7 +41,7 @@ class HomeGateway extends GatewayHandler implements IHomeGateway {
   Future<List<HomeOfferEntity>> getHomeOffers() async {
     return call(
       requisitionCallback: () => _client.get('/home/offers'),
-      onSuccessCallback: (data) => List<HomeOfferEntity>.from(data.map((x) => HomeOfferEntity.fromJson(x))),
+      onSuccessCallback: (data) => List<HomeOfferEntity>.from(data['offers'].map((x) => HomeOfferEntity.fromJson(x))),
       exception: GetHomeOffersException(),
     );
   }
@@ -50,7 +51,7 @@ class HomeGateway extends GatewayHandler implements IHomeGateway {
     return call(
       requisitionCallback: () => _client.get('/home/product_sessions'),
       onSuccessCallback: (data) =>
-          List<HomeProductsSessionEntity>.from(data.map((x) => HomeProductsSessionEntity.fromJson(x))),
+          List<HomeProductsSessionEntity>.from(data['sessions'].map((x) => HomeProductsSessionEntity.fromJson(x))),
       exception: GetHomeProductSessionsException(),
     );
   }

@@ -56,10 +56,37 @@ class HomeViewController extends ChangeNotifier {
     selectedFoodKindId.notifyListeners();
   }
 
-  Future _getFoodKinds() async {}
-  Future _getHomeHighlights() async {}
-  Future _getHomeOffers() async {}
-  Future _getHomeProductSessions() async {}
+  Future _getFoodKinds() async {
+    final result = await _getFoodKindsService.call();
+    result.fold(
+      (failure) => print('Error: $failure'),
+      (data) {},
+    );
+  }
+
+  Future _getHomeHighlights() async {
+    final result = await _getHomeHighlightsService.call();
+    result.fold(
+      (failure) => print('Error: $failure'),
+      (data) {},
+    );
+  }
+
+  Future _getHomeOffers() async {
+    final result = await _getHomeOffersService.call();
+    result.fold(
+      (failure) => print('Error: $failure'),
+      (data) {},
+    );
+  }
+
+  Future _getHomeProductSessions() async {
+    final result = await _getHomeProductSessionsService.call();
+    result.fold(
+      (failure) => print('Error: $failure'),
+      (data) {},
+    );
+  }
 
   addOrRemoveProductFromCart(int productId) {
     if (_productInCartIds.value.contains(productId)) {

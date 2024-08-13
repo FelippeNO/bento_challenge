@@ -10,7 +10,7 @@ class HomeHighlightEntity {
   factory HomeHighlightEntity.fromJson(Map<String, dynamic> json) {
     return HomeHighlightEntity(
       title: json['title'],
-      iconPath: json['iconPath'],
+      iconPath: json['icon_path'],
     );
   }
 }
