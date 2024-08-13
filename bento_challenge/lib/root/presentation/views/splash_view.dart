@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -48,7 +49,7 @@ class _AppSplashViewState extends State<AppSplashView> {
                 height: _positionWasTriggered == false ? 0 : MediaQuery.of(context).size.width * 0.8,
                 width: _positionWasTriggered == false ? 0 : MediaQuery.of(context).size.width * 0.8,
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: UIColors.shamrock,
                   shape: BoxShape.circle,
                 ),
                 onEnd: () {
@@ -65,7 +66,7 @@ class _AppSplashViewState extends State<AppSplashView> {
                 height: MediaQuery.of(context).size.width * 0.55,
                 width: MediaQuery.of(context).size.width * 0.55,
                 child: Image.asset(
-                  './lib/assets/images/cabbage0.png',
+                  './lib/assets/launcher_icons/grocery.png',
                   fit: BoxFit.contain,
                 ),
               ),

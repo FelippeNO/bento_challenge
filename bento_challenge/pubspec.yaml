@@ -42,6 +42,7 @@ flutter:
     - lib/assets/png_icons/
     - lib/assets/lottie_animations/
     - lib/assets/images/
+    - lib/assets/launcher_icons/
 
   fonts:
     - family: Nunito
