@@ -86,7 +86,8 @@ class ProductSnapshotContainer extends StatelessWidget {
                             children: [
                               UIText(
                                 product.shortName,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
                               ),
                               const Spacer(),
                               Row(children: [
