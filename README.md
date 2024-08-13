@@ -34,7 +34,7 @@ Let's talk about something serious now.
 
 You'll find a video presentation where I walk through the app and highlight its key features by accessing this link: [https://youtu.be/0fkFzIt1aQo](https://youtu.be/0fkFzIt1aQo).
 
-[![Watch the video](https://img.youtube.com/vi/0fkFzIt1aQo/0.jpg)](https://www.youtube.com/watch?v=_5tFXJQIzi4)
+[![Watch the video](https://img.youtube.com/vi/0fkFzIt1aQo/0.jpg)](https://youtu.be/0fkFzIt1aQo)
 
 ## Project Structure and Technologies
 
