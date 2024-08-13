@@ -5,6 +5,7 @@ import 'package:bento_challenge/product/domain/entities/product_category_entity.
 class ProductDetailsEntity {
   final int id;
   final String name;
+  final String shortName;
   final String shop;
   final String price;
   final String rating;
@@ -17,6 +18,7 @@ class ProductDetailsEntity {
 
   ProductDetailsEntity({
     required this.id,
+    required this.shortName,
     required this.name,
     required this.shop,
     required this.price,
@@ -40,6 +42,7 @@ class ProductDetailsEntity {
       comparativePrice: map['comparative_price'],
       details: map['details'],
       isFavorited: map['is_favorited'],
+      shortName: map['short_name'],
       categories: List<ProductCategoryEntity>.from(
         map['categories'].map(
           (category) => ProductCategoryEntity.fromMap(category),

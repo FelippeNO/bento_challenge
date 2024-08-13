@@ -14,6 +14,9 @@ class HomeViewController extends ChangeNotifier {
   ValueNotifier<int> selectedFoodKindId = ValueNotifier(1);
   ValueNotifier<bool> isGettinKinds = ValueNotifier(false);
   List<FoodKindEntity> foodKinds = [];
+  final ValueNotifier<List<int>> _productInCartIds = ValueNotifier([]);
+
+  ValueNotifier<List<int>> get productInCartIds => _productInCartIds;
 
   void setSelectedCity(String city) {
     selectedCity.value = city;
@@ -29,5 +32,14 @@ class HomeViewController extends ChangeNotifier {
 
     selectedFoodKindId.value = foodKinds.first.id;
     selectedFoodKindId.notifyListeners();
+  }
+
+  addOrRemoveProductFromCart(int productId) {
+    if (_productInCartIds.value.contains(productId)) {
+      _productInCartIds.value.remove(productId);
+    } else {
+      _productInCartIds.value.add(productId);
+    }
+    _productInCartIds.notifyListeners();
   }
 }

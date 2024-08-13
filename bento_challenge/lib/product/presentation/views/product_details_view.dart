@@ -112,9 +112,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                     fontSize: 26,
                                   ),
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 1),
-                                  child: ProductAvaliationContainer(avaliation: '4.5'),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 1),
+                                  child: ProductAvaliationContainer(avaliation: widget.product.rating),
                                 ),
                               ],
                             ),

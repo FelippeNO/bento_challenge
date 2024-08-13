@@ -132,7 +132,7 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 60 + UIScale.bottomDevicePadding),
+                  SizedBox(height: UIScale.height(15) + UIScale.bottomDevicePadding),
                 ],
               ),
             ),
