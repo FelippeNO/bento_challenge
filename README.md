@@ -119,6 +119,10 @@ I pay attention to the smallest details. If you explore the code, you'll notice 
 
 I believe in simplicity when it comes to state management. I always rely on native solutions and love to measure performance metrics. Using `setState` correctly significantly improves application performance. State management is reserved solely for Views (and even then, only with `ValueNotifier`). Every state management library is essentially an abstraction of `setState` and `ValueNotifier`.
 
+#### Commenting Approach
+
+I usually don't add comments to my code because I believe that code should be simple and easily understandable. Exceptions are made for introducing new concepts to team members or marking deprecated elements. Otherwise, my variables and methods have descriptive, well-thought-out names, almost like telling a story.
+
 ---
 
 These insights offer a glimpse into my development philosophy and highlight my commitment to creating high-quality software with a focus on simplicity, efficiency, and customization.
