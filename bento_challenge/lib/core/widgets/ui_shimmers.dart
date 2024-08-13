@@ -5,10 +5,10 @@ import 'package:shimmer/shimmer.dart';
 class CircularContainerShimmer extends StatelessWidget {
   const CircularContainerShimmer({
     super.key,
-    required this.size,
+    this.size,
   });
 
-  final double size;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +31,13 @@ class CircularContainerShimmer extends StatelessWidget {
 class RoundedContainerShimmer extends StatelessWidget {
   const RoundedContainerShimmer({
     super.key,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.borderRadius = 18,
   });
 
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double borderRadius;
 
   @override

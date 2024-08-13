@@ -3,6 +3,7 @@ import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
 import 'package:bento_challenge/core/widgets/animated_scale_up_scale_down_widget.dart';
+import 'package:bento_challenge/core/widgets/ui_shimmers.dart';
 import 'package:bento_challenge/product/domain/entities/product_details_entity.dart';
 import 'package:bento_challenge/root/home/presentation/controllers/home_view_controller.dart';
 import 'package:bento_challenge/root/navbar/controller/my_bottom_nav_controller.dart';
@@ -10,11 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class ProductSnapshotContainer extends StatelessWidget {
-  const ProductSnapshotContainer(this.productDetailsData, {super.key});
+  const ProductSnapshotContainer(this.product, {super.key});
 
-  final Map<String, dynamic> productDetailsData;
-
-  ProductDetailsEntity get product => ProductDetailsEntity.fromMap(productDetailsData);
+  final ProductDetailsEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +150,17 @@ class ProductSnapshotContainer extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ProductSnapshotContainerShimmer extends StatelessWidget {
+  const ProductSnapshotContainerShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const RoundedContainerShimmer(
+      borderRadius: 14,
     );
   }
 }

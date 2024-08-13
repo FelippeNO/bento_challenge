@@ -2,6 +2,7 @@ import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
+import 'package:bento_challenge/core/enums/basic_state_view.dart';
 import 'package:bento_challenge/root/home/data/home_highlight_data.dart';
 import 'package:bento_challenge/root/home/data/home_offer_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
@@ -90,13 +91,43 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HomeHighlightsSession(highlights: getHighlights()),
+                  ValueListenableBuilder(
+                    valueListenable: homeViewController.homeHighlightsState,
+                    builder: (context, state, _) => switch (state) {
+                      BasicStateView.loading => const HomeHighlightsSessionShimmer(),
+                      BasicStateView.success => HomeHighlightsSession(highlights: getHighlights()),
+                      _ => const SizedBox.shrink()
+                    },
+                  ),
                   const SizedBox(height: 16),
-                  OffersMainCarousel(offers: getOffers()),
+                  ValueListenableBuilder(
+                      valueListenable: homeViewController.homeOffersState,
+                      builder: (context, state, _) => switch (state) {
+                            BasicStateView.loading => const HomeOffersMainCarouselShimmer(),
+                            BasicStateView.success => OffersMainCarousel(offers: getOffers()),
+                            _ => const SizedBox.shrink()
+                          }),
                   const SizedBox(height: 25),
-                  const AnimatedShopByCategorySession(),
+                  ValueListenableBuilder(
+                      valueListenable: homeViewController.foodKindsState,
+                      builder: (context, state, _) => switch (state) {
+                            BasicStateView.loading => const ShopByCategorySessionShimmer(),
+                            BasicStateView.success => const AnimatedShopByCategorySession(),
+                            _ => const SizedBox.shrink()
+                          }),
                   const SizedBox(height: 16),
-                  const HomeProductsGridSession(sessionName: 'Today\'s Special'),
+                  ValueListenableBuilder(
+                    valueListenable: homeViewController.homeProductSessionsState,
+                    builder: (context, state, _) => switch (state) {
+                      BasicStateView.loading => const HomeProductsGridSessionShimmer(),
+                      BasicStateView.success => Column(
+                          children: homeViewController.homeProductSessions
+                              .map((session) => HomeProductsGridSession(session: session))
+                              .toList(),
+                        ),
+                      _ => const SizedBox.shrink()
+                    },
+                  ),
                   SizedBox(height: UIScale.height(15) + UIScale.bottomDevicePadding),
                 ],
               ),
