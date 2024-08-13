@@ -11,11 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.6
-  flutter_modular: ^6.3.4
-  dartz: ^0.10.1
-  lottie: ^3.1.2
-  carousel_slider: ^5.0.0
+  cupertino_icons: 1.0.6
+  flutter_modular: 6.3.4
+  dartz: 0.10.1
+  lottie: 3.1.2
+  carousel_slider: 5.0.0
+  shimmer: 3.0.0
 
 dev_dependencies:
   flutter_test:
