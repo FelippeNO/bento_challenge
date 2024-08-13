@@ -2,7 +2,6 @@ import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
-import 'package:bento_challenge/product/data/product_details_data.dart';
 import 'package:bento_challenge/root/home/data/home_highlight_data.dart';
 import 'package:bento_challenge/root/home/data/home_offer_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
@@ -13,8 +12,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../widgets/change_place_animated_widget.dart';
 import '../widgets/home_highlights_session.dart';
+import '../widgets/home_products_grid_session.dart';
 import '../widgets/offers_main_carousel.dart';
-import '../widgets/product_snapshot_container.dart';
 import '../widgets/shop_by_category_session.dart';
 
 class HomeView extends StatefulWidget {
@@ -97,41 +96,7 @@ class _HomeViewState extends State<HomeView> {
                   const SizedBox(height: 25),
                   const AnimatedShopByCategorySession(),
                   const SizedBox(height: 16),
-                  const Padding(
-                    padding: UIPaddings.onlyHorizontal16,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                      UIText(
-                        'Today\'s Special',
-                        fontWeight: FontWeight.w900,
-                        textAlign: TextAlign.start,
-                        fontSize: 20,
-                      ),
-                      UIText(
-                        'See all',
-                        fontWeight: FontWeight.w800,
-                        textAlign: TextAlign.start,
-                        fontSize: 17,
-                        color: UIColors.shamrock,
-                      ),
-                    ]),
-                  ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: UIPaddings.onlyHorizontal16,
-                    child: GridView.count(
-                      padding: UIPaddings.onlyTop8,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      childAspectRatio: 0.8,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      children: [
-                        for (int i = 0; i < productDetailsData['products'].length; i++)
-                          ProductSnapshotContainer(productDetailsData['products'][i]),
-                      ],
-                    ),
-                  ),
+                  const HomeProductsGridSession(sessionName: 'Today\'s Special'),
                   SizedBox(height: UIScale.height(15) + UIScale.bottomDevicePadding),
                 ],
               ),
