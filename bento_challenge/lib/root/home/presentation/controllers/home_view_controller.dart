@@ -78,6 +78,8 @@ class HomeViewController extends ChangeNotifier {
   }
 
   Future _getFoodKinds() async {
+    _foodKindsState.value = BasicStateView.loading;
+    _foodKindsState.notifyListeners();
     final result = await _getFoodKindsService.call();
     result.fold(
       (failure) {
@@ -101,6 +103,8 @@ class HomeViewController extends ChangeNotifier {
   }
 
   Future _getHomeHighlights() async {
+    _homeHighlightsState.value = BasicStateView.loading;
+    _homeHighlightsState.notifyListeners();
     final result = await _getHomeHighlightsService.call();
     result.fold(
       (failure) {
@@ -123,6 +127,8 @@ class HomeViewController extends ChangeNotifier {
   }
 
   Future _getHomeOffers() async {
+    _homeOffersState.value = BasicStateView.loading;
+    _homeOffersState.notifyListeners();
     final result = await _getHomeOffersService.call();
     result.fold(
       (failure) {
@@ -145,6 +151,8 @@ class HomeViewController extends ChangeNotifier {
   }
 
   Future _getHomeProductSessions() async {
+    _homeProductSessionsState.value = BasicStateView.loading;
+    _homeProductSessionsState.notifyListeners();
     final result = await _getHomeProductSessionsService.call();
     result.fold(
       (failure) {

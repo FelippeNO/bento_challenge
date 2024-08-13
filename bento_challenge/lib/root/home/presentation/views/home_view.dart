@@ -87,49 +87,54 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ValueListenableBuilder(
-                    valueListenable: homeViewController.homeHighlightsState,
-                    builder: (context, state, _) => switch (state) {
-                      BasicStateView.loading => const HomeHighlightsSessionShimmer(),
-                      BasicStateView.success => HomeHighlightsSession(highlights: getHighlights()),
-                      _ => const SizedBox.shrink()
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  ValueListenableBuilder(
-                      valueListenable: homeViewController.homeOffersState,
+            child: RefreshIndicator(
+              onRefresh: () async {
+                homeViewController.init();
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ValueListenableBuilder(
+                      valueListenable: homeViewController.homeHighlightsState,
                       builder: (context, state, _) => switch (state) {
-                            BasicStateView.loading => const HomeOffersMainCarouselShimmer(),
-                            BasicStateView.success => OffersMainCarousel(offers: getOffers()),
-                            _ => const SizedBox.shrink()
-                          }),
-                  const SizedBox(height: 25),
-                  ValueListenableBuilder(
-                      valueListenable: homeViewController.foodKindsState,
+                        BasicStateView.loading => const HomeHighlightsSessionShimmer(),
+                        BasicStateView.success => HomeHighlightsSession(highlights: getHighlights()),
+                        _ => const SizedBox.shrink()
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    ValueListenableBuilder(
+                        valueListenable: homeViewController.homeOffersState,
+                        builder: (context, state, _) => switch (state) {
+                              BasicStateView.loading => const HomeOffersMainCarouselShimmer(),
+                              BasicStateView.success => OffersMainCarousel(offers: getOffers()),
+                              _ => const SizedBox.shrink()
+                            }),
+                    const SizedBox(height: 25),
+                    ValueListenableBuilder(
+                        valueListenable: homeViewController.foodKindsState,
+                        builder: (context, state, _) => switch (state) {
+                              BasicStateView.loading => const ShopByCategorySessionShimmer(),
+                              BasicStateView.success => const AnimatedShopByCategorySession(),
+                              _ => const SizedBox.shrink()
+                            }),
+                    const SizedBox(height: 16),
+                    ValueListenableBuilder(
+                      valueListenable: homeViewController.homeProductSessionsState,
                       builder: (context, state, _) => switch (state) {
-                            BasicStateView.loading => const ShopByCategorySessionShimmer(),
-                            BasicStateView.success => const AnimatedShopByCategorySession(),
-                            _ => const SizedBox.shrink()
-                          }),
-                  const SizedBox(height: 16),
-                  ValueListenableBuilder(
-                    valueListenable: homeViewController.homeProductSessionsState,
-                    builder: (context, state, _) => switch (state) {
-                      BasicStateView.loading => const HomeProductsGridSessionShimmer(),
-                      BasicStateView.success => Column(
-                          children: homeViewController.homeProductSessions
-                              .map((session) => HomeProductsGridSession(session: session))
-                              .toList(),
-                        ),
-                      _ => const SizedBox.shrink()
-                    },
-                  ),
-                  SizedBox(height: UIScale.height(15) + UIScale.bottomDevicePadding),
-                ],
+                        BasicStateView.loading => const HomeProductsGridSessionShimmer(),
+                        BasicStateView.success => Column(
+                            children: homeViewController.homeProductSessions
+                                .map((session) => HomeProductsGridSession(session: session))
+                                .toList(),
+                          ),
+                        _ => const SizedBox.shrink()
+                      },
+                    ),
+                    SizedBox(height: UIScale.height(15) + UIScale.bottomDevicePadding),
+                  ],
+                ),
               ),
             ),
           ),
