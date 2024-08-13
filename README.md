@@ -30,6 +30,12 @@ Revel in the transformation!
 
 Let's talk about something serious now.
 
+## Video Presentation
+
+You'll find a video presentation where I walk through the app and highlight its key features by accessing this link: [https://youtu.be/0fkFzIt1aQo](https://youtu.be/0fkFzIt1aQo).
+
+[![Watch the video](https://img.youtube.com/vi/0fkFzIt1aQo/0.jpg)](https://www.youtube.com/watch?v=_5tFXJQIzi4)
+
 ## Project Structure and Technologies
 
 This project is a mobile application developed in Flutter, using Clean Architecture with Domain-Driven Design (DDD) to provide a robust and scalable code structure.
