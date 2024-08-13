@@ -51,6 +51,7 @@ class ProductSnapshotContainer extends StatelessWidget {
                   UIText(
                     " ${product.rating}",
                     fontWeight: FontWeight.w600,
+                    fontSize: 13,
                   ),
                 ],
               ),

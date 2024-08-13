@@ -1,12 +1,12 @@
-# Project Resurrection: Breathing Life into a Static Image
+# Project Resurrection: From Static Image to Interactive Masterpiece
 
-Welcome to the wacky world of Project Resurrection! This journey began with a single, colorless image. Imagine staring at a blank slate with no colors, no fonts, no dimensions, and no icons or images. Yet, here we are, ready to tell the tale of how chaos turned into creation.
+Welcome to the quirky chronicle of Project Resurrection! What began as a static image without a color guide, font files, iconography, or dimension specifications transformed into an interactive digital delight. Here's how I navigated this creative conundrum.
 
-## Initial Challenges and Their Humorous Solutions
+## Initial Challenges and How I Overcame Them
 
 ### Color Conundrum
 
-In a world devoid of colors, I resorted to the almighty Windows Eyedropper Tool to snatch hues from the void. Armed with the names bestowed upon these colors by the mystical site NameThatColor, I created a color file, giving life to the lifeless.
+Faced with a colorful image but no color guide, I resorted to the almighty Windows Eyedropper Tool to extract hues directly from the image. To give them proper names, I used NameThatColor, creating a palette that brought the project to life.
 
 ### Font Fiasco
 
@@ -20,11 +20,11 @@ Though my "eyeballometer" is sharp, my engineering brain craves perfect dimensio
 
 Google Lens became my partner in crime for icon and image retrieval. Uploading the desired icons and images, it pointed me towards the packs and sources I sought.
 
-## Conclusion
+### Animation Antics
 
-From deciphering colors to identifying fonts and dimensions, and finally capturing icons, Project Resurrection transformed a humble image into a thriving, dynamic application. Join me in celebrating the triumph of engineering curiosity and a touch of humor over seemingly insurmountable odds. Together, we bring life to pixels!
+If I didn't have the dimensions, imagine the chaos of figuring out animations! It was like being thrown into a dance-off without knowing the moves. With divine intervention (and a lot of head-scratching), I summoned all my creativity to bring the project to life. I became a wizard of transitions, casting spells of fade-ins and slide-outs, hoping they'd look as cool as I imagined. Who knows what the original animations were supposed to be? With a sprinkle of magic and a splash of improvisation, I crafted animations that felt as smooth as a cat in slippers, adding that final touch of whimsy to the project.
 
-Enjoy the chaos and creativity!
+Revel in the transformation!
 
 ---
 
@@ -141,6 +141,7 @@ To set up the project, follow the steps below:
 3. Install dependencies:
 
    ```bash
+   cd bento_challenge
    flutter pub get
    ```
 
