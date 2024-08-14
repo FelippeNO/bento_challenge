@@ -189,7 +189,7 @@ To set up the project, follow the steps below:
 2. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/FelippeNO/bento_challenge.git
    ```
 
 3. Install dependencies:
