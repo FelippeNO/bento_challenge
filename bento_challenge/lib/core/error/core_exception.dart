@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-abstract class CoreException implements Exception {
+abstract class CoreException extends Equatable implements Exception {
   List<String> get failureMessages => _failuresMessages;
 
   final List<String> _failuresMessages = [];
@@ -17,4 +18,7 @@ abstract class CoreException implements Exception {
       printE();
     }
   }
+
+  @override
+  List<Object?> get props => [_failuresMessages];
 }
