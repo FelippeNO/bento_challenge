@@ -1,4 +1,3 @@
-import 'package:bento_challenge/core/design/ui_colors.dart';
 import 'package:bento_challenge/core/design/ui_paddings.dart';
 import 'package:bento_challenge/core/design/ui_scale.dart';
 import 'package:bento_challenge/core/design/ui_text.dart';
@@ -7,6 +6,7 @@ import 'package:bento_challenge/root/home/presentation/controllers/home_view_con
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../widgets/avatar_circle.dart';
 import '../widgets/change_place_animated_widget.dart';
 import '../widgets/home_highlights_session.dart';
 import '../widgets/home_products_grid_session.dart';
@@ -39,11 +39,11 @@ class _HomeViewState extends State<HomeView> {
           Container(
             padding: UIPaddings.onlyHorizontal16,
             height: 70,
-            child: Row(
+            child: const Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Column(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -54,14 +54,7 @@ class _HomeViewState extends State<HomeView> {
                     ChangePlaceAnimatedWidget(),
                   ],
                 ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: const BoxDecoration(
-                    color: UIColors.fringyFlower,
-                    shape: BoxShape.circle,
-                  ),
-                ),
+                AvatarCircle(),
               ],
             ),
           ),
