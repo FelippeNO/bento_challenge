@@ -56,6 +56,16 @@ The project follows the principles of clean architecture with DDD, dividing busi
 
 For managing views, `ValueNotifier` is used, a native Flutter solution that allows efficient and reactive state updates. Within widgets, especially animated ones, Flutter's native `setState` is used to ensure greater performance control.
 
+### Testing
+
+To ensure the reliability and correctness of the application, I implemented unit tests for the `MockedClient`, gateways, and repositories. These tests validate the application's core functionalities and ensure that all components interact as expected.
+
+To run the tests, simply execute the following command:
+
+```bash
+flutter test
+```
+
 ## Packages Used
 
 ### [flutter_modular](https://pub.dev/packages/flutter_modular) 6.3.4
@@ -125,6 +135,26 @@ Automates the generation of application launcher icons for Android and iOS, ensu
 - Simplifies the creation of launcher icons.
 - Supports adaptive icons for Android.
 
+### [mocktail](https://pub.dev/packages/mocktail) 1.0.4
+
+A Dart package that simplifies mocking in unit tests. It allows for flexible and easy creation of mock objects for testing purposes.
+
+**Key Features:**
+
+- Easy to use API for creating mocks.
+- Supports a variety of test scenarios.
+- Ensures high test coverage by making mocks simpler to create.
+
+### [equatable](https://pub.dev/packages/equatable) 2.0.5
+
+A Dart package that helps implement equality comparisons quickly and correctly. It eliminates boilerplate code by using a mixin to implement value equality.
+
+**Key Features:**
+
+- Simplifies value equality checks.
+- Reduces boilerplate code.
+- Ensures correct equality implementation across Dart objects.
+
 ## Fun Facts
 
 #### Minimalist by Nature
@@ -173,4 +203,10 @@ To set up the project, follow the steps below:
 
    ```bash
    flutter run
+   ```
+
+5. Run the tests:
+
+   ```bash
+   flutter test
    ```
