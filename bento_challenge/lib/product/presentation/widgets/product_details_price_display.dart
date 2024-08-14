@@ -82,7 +82,6 @@ class _ProductDetailsPriceDisplayState extends State<ProductDetailsPriceDisplay>
                 '\$${widget.price}',
                 fontSize: 26,
                 fontWeight: FontWeight.w800,
-                color: UIColors.blueZodiac,
               ),
             ),
             if (widget.originalPrice != null)

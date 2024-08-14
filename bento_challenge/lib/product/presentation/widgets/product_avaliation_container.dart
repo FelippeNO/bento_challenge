@@ -36,7 +36,6 @@ class ProductAvaliationContainer extends StatelessWidget {
           UIText(
             avaliation,
             fontSize: 16,
-            color: UIColors.blueZodiac,
             fontWeight: FontWeight.w800,
           ),
         ],

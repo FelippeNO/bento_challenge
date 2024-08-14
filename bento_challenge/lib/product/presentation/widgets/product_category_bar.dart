@@ -130,7 +130,6 @@ class _ProductCategoryItemState extends State<ProductCategoryItem> with SingleTi
                   widget.item.name,
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: UIColors.blueZodiac,
                 ),
               ],
             ),

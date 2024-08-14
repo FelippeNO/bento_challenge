@@ -107,7 +107,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   width: UIScale.width(65),
                                   child: UIText(
                                     widget.product.name,
-                                    color: UIColors.blueZodiac,
                                     fontWeight: FontWeight.w800,
                                     fontSize: 26,
                                   ),
@@ -121,7 +120,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                             const SizedBox(height: 8),
                             UIText(
                               'Shop: ${widget.product.shop}',
-                              color: UIColors.blueZodiac,
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               textAlign: TextAlign.start,
@@ -133,14 +131,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                             const SizedBox(height: 16),
                             const UIText(
                               'Details',
-                              color: UIColors.blueZodiac,
                               fontWeight: FontWeight.w800,
                               fontSize: 20,
                             ),
                             const SizedBox(height: 8),
                             UIText(
                               widget.product.details,
-                              color: UIColors.blueZodiac,
                               fontWeight: FontWeight.w500,
                               fontSize: 13.7,
                             ),

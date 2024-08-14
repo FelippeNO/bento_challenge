@@ -56,7 +56,6 @@ class FoodKindAnimatedContainer extends StatelessWidget {
         const SizedBox(height: 4),
         UIText(
           foodKind.name,
-          color: UIColors.blueZodiac,
           fontWeight: FontWeight.w800,
         ),
       ],

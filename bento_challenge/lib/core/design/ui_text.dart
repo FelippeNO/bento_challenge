@@ -41,23 +41,6 @@ class UIText extends StatelessWidget {
   final TextDecorationStyle? decorationStyle;
   final TextDecoration? textDecoration;
 
-  const UIText.title(
-    this.text, {
-    super.key,
-    this.color = Colors.black,
-    this.fontSize = 24,
-    this.letterSpacing = 1,
-    this.maxLines,
-    this.fontWeight = FontWeight.w800,
-    this.overflow,
-    this.textAlign = TextAlign.left,
-    this.fontFamily = FontFamilyEnum.nunito,
-    this.height,
-    this.textBaseline,
-    this.decorationStyle,
-    this.textDecoration,
-  });
-
   @override
   Widget build(BuildContext context) {
     return Text(
