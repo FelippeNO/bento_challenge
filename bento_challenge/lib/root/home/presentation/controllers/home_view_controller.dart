@@ -1,5 +1,4 @@
 import 'package:bento_challenge/core/enums/basic_state_view.dart';
-import 'package:bento_challenge/root/home/data/food_kind_data.dart';
 import 'package:bento_challenge/root/home/domain/entities/food_kind_entity.dart';
 import 'package:bento_challenge/root/home/domain/entities/home_highlight_entity.dart';
 import 'package:bento_challenge/root/home/domain/entities/home_offer_entity.dart';
@@ -60,21 +59,17 @@ class HomeViewController extends ChangeNotifier {
   }
 
   init() async {
-    Future.wait([
+    await Future.wait([
       _getFoodKinds(),
       _getHomeHighlights(),
       _getHomeOffers(),
       _getHomeProductSessions(),
     ]);
 
-    final data = foodKindData['kinds'] as List<Map<String, dynamic>>;
-
-    for (var item in data) {
-      foodKinds.add(FoodKindEntity.fromJson(item));
+    if (_foodKinds.isNotEmpty) {
+      selectedFoodKindId.value = foodKinds.first.id;
+      selectedFoodKindId.notifyListeners();
     }
-
-    selectedFoodKindId.value = foodKinds.first.id;
-    selectedFoodKindId.notifyListeners();
   }
 
   Future _getFoodKinds() async {
