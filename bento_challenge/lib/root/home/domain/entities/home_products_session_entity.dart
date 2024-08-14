@@ -20,7 +20,3 @@ class HomeProductsSessionEntity {
     );
   }
 }
-
-enum ImageLayoutEnum { left, right, center }
-
-enum CallToActionStyleEnum { primary, secondary, tertiary }
